@@ -7,15 +7,14 @@
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
  */
-#define DEBUG    1
 //#include <plat/regs-iis.h>
 #include <sound/soc.h>
 #include <sound/pcm.h>
 #include <sound/pcm_params.h>
 //#include "s5pc1xx-i2s.h"
-#include "s3c24xx-i2s.h"
-#include "../codecs/wm8960.h"
+#include "wm8960.h"
 
+#define DEBUG 1
 #ifdef	DEBUG
 #define	dprintk( argc, argv... )		printk( argc, ##argv )
 #else
@@ -100,13 +99,13 @@ static int mini210_hw_params(struct snd_pcm_substream *substream, struct snd_pcm
 		return ret;
 	}
 
-	ret = snd_soc_dai_set_sysclk( cpu_dai,0x0, rate, SND_SOC_CLOCK_OUT );	//44100 daniel S3C64XX_CLKSRC_CDCLK
+	ret = snd_soc_dai_set_sysclk( cpu_dai,0x3, rate, SND_SOC_CLOCK_OUT );	//SAMSUNG_I2S_RCLKO: using intenal clk as master src;
 	if( ret < 0 ){
 		dprintk( "-%s(): AP sycclk CDCLK setting error, %d\n", __FUNCTION__, ret );
 		return ret;
 	}
 
-	ret = snd_soc_dai_set_sysclk( cpu_dai,0x0, rate, SND_SOC_CLOCK_OUT );	//44100 daniel S3C_CLKSRC_CLKAUDIO
+	ret = snd_soc_dai_set_sysclk( cpu_dai,0x1, rate, SND_SOC_CLOCK_OUT );	//SAMSUNG_I2S_RCLKSRC_1: master mode,using clkaudio as src
 	if( ret < 0 ){
 		dprintk( "-%s(): AP sysclk CLKAUDIO setting error, %d\n", __FUNCTION__, ret );
 		return ret;
@@ -138,19 +137,19 @@ static int mini210_hw_params(struct snd_pcm_substream *substream, struct snd_pcm
 	
 	prescaler_div =  sl / mul;
 	prescaler_div--;
-	ret = snd_soc_dai_set_clkdiv( cpu_dai,S3C24XX_DIV_PRESCALER, prescaler_div );//daniel S3C64XX_DIV_PRESCALER
+	ret = snd_soc_dai_set_clkdiv( cpu_dai, 0x3, prescaler_div );//SAMSUNG_I2S_DIV_PRESCALER:
 	if( ret < 0 ){
 		dprintk( "-%s(): AP prescalar setting error, %d\n", __FUNCTION__, ret );
 		return ret;
 	}
 
-	ret = snd_soc_dai_set_clkdiv( cpu_dai,S3C24XX_DIV_RCLK, rclk_div );//daniel S3C64XX_DIV_RCLK
+	ret = snd_soc_dai_set_clkdiv( cpu_dai, 0x2, rclk_div );//SAMSUNG_I2S_DIV_RCLK
 	if( ret < 0 ){
 		dprintk( "-%s(): AP RFS setting error, %d\n", __FUNCTION__, ret );
 		return ret;
 	}
 
-	ret = snd_soc_dai_set_clkdiv( cpu_dai,S3C24XX_DIV_BCLK, bclk_div );//daniel S3C64XX_DIV_BCLK
+	ret = snd_soc_dai_set_clkdiv( cpu_dai, 0x1, bclk_div );//daniel S3C64XX_DIV_BCLK
 	if( ret < 0 ){
 		dprintk( "-%s(): AP BFS setting error, %d\n", __FUNCTION__, ret );
 		return ret;
@@ -196,6 +195,8 @@ static int mini210_wm8960_init(struct snd_soc_pcm_runtime *rtd)
 	snd_soc_dapm_nc_pin(dapm, "RINPUT1");
 	snd_soc_dapm_nc_pin(dapm, "LINPUT2");
 	snd_soc_dapm_nc_pin(dapm, "RINPUT2");
+	snd_soc_dapm_nc_pin(dapm, "LINPUT3");
+	snd_soc_dapm_nc_pin(dapm, "RINPUT3");
 	snd_soc_dapm_nc_pin(dapm, "OUT3");
 	
 	snd_soc_dapm_new_controls( dapm, mini210_dapm_capture_widgets, ARRAY_SIZE( mini210_dapm_capture_widgets ) );
@@ -207,6 +208,7 @@ static int mini210_wm8960_init(struct snd_soc_pcm_runtime *rtd)
 	snd_soc_dapm_enable_pin(dapm, "Mic Jack");
 	snd_soc_dapm_enable_pin(dapm, "Speaker_L");
 	snd_soc_dapm_enable_pin(dapm, "Speaker_R");
+	snd_soc_dapm_enable_pin(dapm, "LINPUT1");//add lpq
 	
 	snd_soc_dapm_disable_pin(dapm, "Line Input 3 (FM)");
 
@@ -219,7 +221,7 @@ static int mini210_wm8960_init(struct snd_soc_pcm_runtime *rtd)
 }
 
 static struct snd_soc_dai_link mini210_dai = {
-	.name = "MINI210",
+	.name = "MINI6410",
 	.stream_name = "WM8960 HiFi",
 	.codec_name = "wm8960-codec.0-001a",
 	.platform_name = "samsung-audio",
@@ -230,7 +232,7 @@ static struct snd_soc_dai_link mini210_dai = {
 };
 
 static struct snd_soc_card mini210_soc_card = {
-	.name = "mini210",
+	.name = "mini6410",
 	.dai_link = &mini210_dai,
 	.num_links = 1,
 };
@@ -243,7 +245,6 @@ static int __init mini210_audio_init(void)
 	
 	dprintk("+%s()\n", __FUNCTION__ );
 
-    pr_debug("pr_debug ok\n");
 	mini210_snd_device = platform_device_alloc("soc-audio", -1);
 	if ( !mini210_snd_device ){
 		dprintk("-%s() : platform_device_alloc failed\n", __FUNCTION__ );
@@ -265,7 +266,6 @@ static void __exit mini210_audio_exit(void)
 {
 	dprintk("+%s()\n", __FUNCTION__ );
 	platform_device_unregister( mini210_snd_device );
-	
 	dprintk("-%s()\n", __FUNCTION__ );
 }
 

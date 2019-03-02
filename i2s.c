@@ -484,6 +484,7 @@ static int i2s_set_sysclk(struct snd_soc_dai *dai,
 	struct i2s_dai *i2s = to_info(dai);
 	struct i2s_dai *other = i2s->pri_dai ? : i2s->sec_dai;
 	u32 mod = readl(i2s->addr + I2SMOD);
+	pr_info("%s: dai=%p clk_id=%d rfs=%d\n", __FUNCTION__, dai, clk_id, rfs);
 
 	switch (clk_id) {
 	case SAMSUNG_I2S_CDCLK:
@@ -507,9 +508,9 @@ static int i2s_set_sysclk(struct snd_soc_dai *dai,
 		if (dir == SND_SOC_CLOCK_IN)
 			mod |= MOD_CDCLKCON;
 		else
-			mod &= ~MOD_CDCLKCON;
+			mod &= ~MOD_CDCLKCON;// using internal clk as master src;lpq
 
-		i2s->rfs = rfs;
+		//i2s->rfs = rfs;
 		break;
 
 	case SAMSUNG_I2S_RCLKSRC_0: /* clock corrsponding to IISMOD[10] := 0 */
@@ -558,7 +559,7 @@ static int i2s_set_sysclk(struct snd_soc_dai *dai,
 		if (clk_id == 0)
 			mod &= ~MOD_IMS_SYSMUX;
 		else
-			mod |= MOD_IMS_SYSMUX;
+			mod |= MOD_IMS_SYSMUX; // master mode and using clkaudio as src; lpq
 		break;
 
 	default:
@@ -566,6 +567,7 @@ static int i2s_set_sysclk(struct snd_soc_dai *dai,
 		return -EINVAL;
 	}
 
+	pr_info("RCLK_SRC=%luHz \n", i2s->rclk_srcrate);
 	writel(mod, i2s->addr + I2SMOD);
 
 	return 0;
@@ -577,6 +579,7 @@ static int i2s_set_fmt(struct snd_soc_dai *dai,
 	struct i2s_dai *i2s = to_info(dai);
 	u32 mod = readl(i2s->addr + I2SMOD);
 	u32 tmp = 0;
+	pr_info("%s: dai=%p rfs=%d\n", __FUNCTION__, dai, fmt);
 
 	/* Format is priority */
 	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
@@ -620,9 +623,11 @@ static int i2s_set_fmt(struct snd_soc_dai *dai,
 		break;
 	case SND_SOC_DAIFMT_CBS_CFS:
 		/* Set default source clock in Master mode */
+		#if 0
 		if (i2s->rclk_srcrate == 0)
 			i2s_set_sysclk(dai, SAMSUNG_I2S_RCLKSRC_0,
 							0, SND_SOC_CLOCK_IN);
+		#endif
 		break;
 	default:
 		dev_err(&i2s->pdev->dev, "master/slave format not supported\n");
@@ -823,7 +828,7 @@ static int config_setup(struct i2s_dai *i2s)
 	if (!(i2s->quirks & QUIRK_NO_MUXPSR)) {
 		psr = i2s->rclk_srcrate / i2s->frmclk / rfs;
 		writel(((psr - 1) << 8) | PSR_PSREN, i2s->addr + I2SPSR);
-		dev_dbg(&i2s->pdev->dev,
+		dev_info(&i2s->pdev->dev,
 			"RCLK_SRC=%luHz PSR=%u, RCLK=%dfs, BCLK=%dfs\n",
 				i2s->rclk_srcrate, psr, rfs, bfs);
 	}
@@ -883,17 +888,58 @@ static int i2s_set_clkdiv(struct snd_soc_dai *dai,
 	int div_id, int div)
 {
 	struct i2s_dai *i2s = to_info(dai);
-	struct i2s_dai *other = i2s->pri_dai ? : i2s->sec_dai;
+	u32 reg;
 
+	pr_info("%s: dai=%p div_id=%d div=%d\n", __FUNCTION__, dai, div_id, div);
 	switch (div_id) {
 	case SAMSUNG_I2S_DIV_BCLK:
-		if ((any_active(i2s) && div && (get_bfs(i2s) != div))
-			|| (other && other->bfs && (other->bfs != div))) {
-			dev_err(&i2s->pdev->dev,
-				"%s:%d Other DAI busy\n", __func__, __LINE__);
-			return -EAGAIN;
+		switch (div) {
+		case 16:
+			div = S3C6410_IISMOD_BCLK_16FS;
+			break;
+		case 32:
+			div = S3C6410_IISMOD_BCLK_32FS;
+			break;
+		case 24:
+			div = S3C6410_IISMOD_BCLK_24FS;
+			break;
+		case 48:
+			div = S3C6410_IISMOD_BCLK_48FS;
+			break;
+		default:
+			return -EINVAL;
 		}
-		i2s->bfs = div;
+		reg = readl(i2s->addr + I2SMOD);
+		reg &= ~S3C6410_IISMOD_BCLK_MASK;
+		writel(reg | div, i2s->addr + I2SMOD);
+		break;
+	case SAMSUNG_I2S_DIV_RCLK:
+		switch (div) {
+		case 256:
+			div = S3C6410_IISMOD_RCLK_256FS;
+			break;
+		case 384:
+			div = S3C6410_IISMOD_RCLK_384FS;
+			break;
+		case 512:
+			div = S3C6410_IISMOD_RCLK_512FS;
+			break;
+		case 768:
+			div = S3C6410_IISMOD_RCLK_768FS;
+			break;
+		default:
+			return -EINVAL;
+		}
+		reg = readl(i2s->addr + I2SMOD);
+		reg &= ~S3C6410_IISMOD_RCLK_MASK;
+		writel(reg | div, i2s->addr + I2SMOD);
+		break;
+	case SAMSUNG_I2S_DIV_PRESCALER:
+		if (div >= 0) {
+			writel((div << 8) | S3C6410_IISPSR_PSREN,
+				i2s->addr + I2SPSR);
+		} else {
+				writel(0x0, i2s->addr + I2SPSR);
 		break;
 	default:
 		dev_err(&i2s->pdev->dev,
