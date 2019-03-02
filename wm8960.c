@@ -8,7 +8,6 @@
  * published by the Free Software Foundation.
  */
 
-#define DEBUG    1
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/init.h>
@@ -63,7 +62,7 @@ static const u16 wm8960_reg[WM8960_CACHEREGNUM] = {
 	0x0000, 0x00c3, 0x00c3, 0x01c0,
 	0x0000, 0x0000, 0x0000, 0x0000,
 	0x0000, 0x0000, 0x0000, 0x0000,
-	0x0100, 0x0100, 0x0050, 0x0050,
+	0x0130, 0x0130, 0x0050, 0x0050,
 	0x0050, 0x0050, 0x0000, 0x0000,
 	0x0000, 0x0000, 0x0040, 0x0000,
 	0x0000, 0x0050, 0x0050, 0x0000,
@@ -156,6 +155,7 @@ static int wm8960_put_deemph(struct snd_kcontrol *kcontrol,
 	return wm8960_set_deemph(codec);
 }
 
+static const DECLARE_TLV_DB_SCALE(lin_tlv, -1725, 75, 0);
 static const DECLARE_TLV_DB_SCALE(adc_tlv, -9700, 50, 0);
 static const DECLARE_TLV_DB_SCALE(dac_tlv, -12700, 50, 1);
 static const DECLARE_TLV_DB_SCALE(bypass_tlv, -2100, 300, 0);
@@ -163,11 +163,11 @@ static const DECLARE_TLV_DB_SCALE(out_tlv, -12100, 100, 1);
 
 static const struct snd_kcontrol_new wm8960_snd_controls[] = {
 SOC_DOUBLE_R_TLV("Capture Volume", WM8960_LINVOL, WM8960_RINVOL,
-		 0, 63, 0, adc_tlv),
+		 0, 63, 0, lin_tlv),
 SOC_DOUBLE_R("Capture Volume ZC Switch", WM8960_LINVOL, WM8960_RINVOL,
 	6, 1, 0),
 SOC_DOUBLE_R("Capture Switch", WM8960_LINVOL, WM8960_RINVOL,
-	7, 1, 0),
+	7, 1, 1),
 
 SOC_DOUBLE_R_TLV("Playback Volume", WM8960_LDAC, WM8960_RDAC,
 		 0, 255, 0, dac_tlv),
@@ -209,8 +209,8 @@ SOC_SINGLE("ALC Attack", WM8960_ALC3, 0, 15, 0),
 SOC_SINGLE("Noise Gate Threshold", WM8960_NOISEG, 3, 31, 0),
 SOC_SINGLE("Noise Gate Switch", WM8960_NOISEG, 0, 1, 0),
 
-SOC_DOUBLE_R("ADC PCM Capture Volume", WM8960_LINPATH, WM8960_RINPATH,
-	0, 127, 0),
+SOC_DOUBLE_R_TLV("ADC PCM Capture Volume", WM8960_LADC, WM8960_RADC,
+	0, 255, 0, adc_tlv),
 
 SOC_SINGLE_TLV("Left Output Mixer Boost Bypass Volume",
 	       WM8960_BYPASS1, 4, 7, 1, bypass_tlv),
@@ -279,8 +279,8 @@ SND_SOC_DAPM_MIXER("Left Input Mixer", WM8960_POWER3, 5, 0,
 SND_SOC_DAPM_MIXER("Right Input Mixer", WM8960_POWER3, 4, 0,
 		   wm8960_rin, ARRAY_SIZE(wm8960_rin)),
 
-SND_SOC_DAPM_ADC("Left ADC", "Capture", WM8960_POWER2, 3, 0),
-SND_SOC_DAPM_ADC("Right ADC", "Capture", WM8960_POWER2, 2, 0),
+SND_SOC_DAPM_ADC("Left ADC", "Capture", WM8960_POWER1, 3, 0),
+SND_SOC_DAPM_ADC("Right ADC", "Capture", WM8960_POWER1, 2, 0),
 
 SND_SOC_DAPM_DAC("Left DAC", "Playback", WM8960_POWER2, 8, 0),
 SND_SOC_DAPM_DAC("Right DAC", "Playback", WM8960_POWER2, 7, 0),
@@ -338,7 +338,7 @@ static const struct snd_soc_dapm_route audio_paths[] = {
 	{ "Right Input Mixer", "Boost Switch", "Right Boost Mixer", },
 	{ "Right Input Mixer", NULL, "RINPUT1", },  /* Really Boost Switch */
 	{ "Right Input Mixer", NULL, "RINPUT2" },
-	{ "Right Input Mixer", NULL, "LINPUT3" },
+	{ "Right Input Mixer", NULL, "RINPUT3" },
 
 	{ "Left ADC", NULL, "Left Input Mixer" },
 	{ "Right ADC", NULL, "Right Input Mixer" },
@@ -437,6 +437,7 @@ static int wm8960_set_dai_fmt(struct snd_soc_dai *codec_dai,
 {
 	struct snd_soc_codec *codec = codec_dai->codec;
 	u16 iface = 0;
+	pr_info("%s: code_dai=%p  fmt=%d\n", __FUNCTION__, codec_dai, fmt);
 
 	/* set master/slave audio interface */
 	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
@@ -501,7 +502,7 @@ static struct {
 	{ 22050, 2 },
 	{ 24000, 2 },
 	{ 16000, 3 },
-	{ 11250, 4 },
+	{ 11025, 4 },
 	{ 12000, 4 },
 	{  8000, 5 },
 };
@@ -823,6 +824,7 @@ static int wm8960_set_dai_clkdiv(struct snd_soc_dai *codec_dai,
 {
 	struct snd_soc_codec *codec = codec_dai->codec;
 	u16 reg;
+	pr_info("%s: codec_dai=%p div_id=%d div=%d\n", __FUNCTION__, codec_dai, div_id, div);
 
 	switch (div_id) {
 	case WM8960_SYSCLKDIV:
@@ -924,8 +926,9 @@ static int wm8960_probe(struct snd_soc_codec *codec)
 	struct wm8960_data *pdata = dev_get_platdata(codec->dev);
 	int ret;
 	u16 reg;
-    
-    dev_dbg(codec->dev, "lpq-enter %s\n",__func__);
+
+	dev_dbg(codec->dev, "wm8960_probe entered\n");
+
 	wm8960->set_bias_level = wm8960_set_bias_level_out3;
 	codec->control_data = wm8960->control_data;
 
@@ -1010,8 +1013,8 @@ static __devinit int wm8960_i2c_probe(struct i2c_client *i2c,
 {
 	struct wm8960_priv *wm8960;
 	int ret;
-    
-    //dev_dbg("lpq-enter %s\n",__func__);
+
+	pr_info( "wm8960_i2c_probe codec entered\n");
 	wm8960 = kzalloc(sizeof(struct wm8960_priv), GFP_KERNEL);
 	if (wm8960 == NULL)
 		return -ENOMEM;
