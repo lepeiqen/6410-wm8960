@@ -1,0 +1,59 @@
+
+1. the sound card canbe seen, hw_params no err, but no sound out; have many logs;
+2. changes: 
+3. add: Make file in sound/soc/samsung add 2 line of 6410/8960;
+capless=1:
+arch/arm/mach-s3c64xx/mach-mini6410.c +391 : capless = 1;
+i2s.c:	set_clkdiv: add rclk and prediv;
+4. clk not out from master;
+changes: i2s.c: remove _set_fmt: src=0
+	set_sysclk: rfs wrong value;	
+5. aplay -r8000 -f S16_LE /sdcard/abc.wav  abc.wav is recorded by my notebook;
+
+
+1. amixer values to set before play:
+amixer cset numid=5 80
+amixer cset numid=38 on
+amixer cset numid=35 on
+2. play test cmds or steps:
+aplay -r44100 -c2 -f S16_LE /sdcard/godisagirl.mp3 &  not ok, parameters not ok; using app to play is ok;
+aplay -r8000 -f S16_LE /sdcard/abc.wav ; aplay /sdcard/abc.wav ;
+aplay -r8000 -f S16_LE /sdcard/abc.wav &
+3. autoconfig cmds:
+after change all the mixer value and play work well, dump the config to a file and set it work automatically:
+3.1. alsactl store -f /etc/wm8960.conf
+3.2. change file: /etc/rc.d/init.d/alsaconf : from wm9714.conf to wm8960.conf
+4. record test cmds: not test OK?
+arecord -Dhw:0,1 -d 10 -f cd -r 44100 -c 2 -t wav test.wav
+arecord -r 44100 -t wav test.wav
+arecord -r 8000 -t wav test.wav
+arecord -f cd test1.wav
+
+check reg values:
+0. amixer controls/contents
+1. amixer cget numid=38
+2. cat /sys/devices/platform/soc-audio/MINI6410/codec_reg 
+   cat /sys/devices/platform/soc-audio/MINI6410/dapm_widget
+3. /usr/bin/amixer aplay arecord
+
+other cmds: 
+jobs 
+fg %n
+kill %n
+ps get pid and kill pid
+/etc/init.d/rcS
+/etc/rc.d/init.d/alsaconf
+alsactl restore -f /etc/wm8960.conf wm9714.conf
+
+amixer values backcp:
+amixer cset numid=1 63
+amixer cset numid=30 255
+amixer cset numid=48 on
+amixer cset numid=42 on
+amixer cset numid=45 on
+amixer cset numid=41 on
+amixer cset numid=5 80
+amixer cset numid=38 on
+amixer cset numid=35 on
+
+
