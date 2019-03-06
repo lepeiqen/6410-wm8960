@@ -57,3 +57,16 @@ amixer cset numid=38 on
 amixer cset numid=35 on
 
 
+amixer cset numid=1 63
+amixer cset numid=36 255
+amixer cset numid=48 on
+amixer cset numid=54 on
+amixer cset numid=51 on
+amixer cset numid=47 on
+amixer cset numid=11 80
+amixer cset numid=44 on
+amixer cset numid=41 on
+
+amixer cget numid=8 9
+
+minicom -C x50-log-$(date +%Y-%m-%d_%H:%M:%S).log

@@ -54,7 +54,7 @@
  * using 2 wire for device control, so we cache them instead.
  */
 static const u16 wm8960_reg[WM8960_CACHEREGNUM] = {
-	0x0097, 0x0097, 0x0000, 0x0000,
+	0x0017, 0x0017, 0x0000, 0x0000,
 	0x0000, 0x0008, 0x0000, 0x000a,
 	0x01c0, 0x0000, 0x00ff, 0x00ff,
 	0x0000, 0x0000, 0x0000, 0x0000,
@@ -156,10 +156,16 @@ static int wm8960_put_deemph(struct snd_kcontrol *kcontrol,
 }
 
 static const DECLARE_TLV_DB_SCALE(lin_tlv, -1725, 75, 0);
-static const DECLARE_TLV_DB_SCALE(adc_tlv, -9700, 50, 0);
-static const DECLARE_TLV_DB_SCALE(dac_tlv, -12700, 50, 1);
+static const DECLARE_TLV_DB_SCALE(adc_tlv, -9750, 50, 1);
+static const DECLARE_TLV_DB_SCALE(dac_tlv, -12750, 50, 1);
 static const DECLARE_TLV_DB_SCALE(bypass_tlv, -2100, 300, 0);
 static const DECLARE_TLV_DB_SCALE(out_tlv, -12100, 100, 1);
+static const DECLARE_TLV_DB_SCALE(lineinboost_tlv, -1500, 300, 1);
+static const unsigned int micboost_tlv[] = {
+		TLV_DB_RANGE_HEAD(2),
+		0, 1, TLV_DB_SCALE_ITEM(0, 1300, 0),
+		2, 3, TLV_DB_SCALE_ITEM(2000, 900, 0),
+};
 
 static const struct snd_kcontrol_new wm8960_snd_controls[] = {
 SOC_DOUBLE_R_TLV("Capture Volume", WM8960_LINVOL, WM8960_RINVOL,
@@ -168,6 +174,20 @@ SOC_DOUBLE_R("Capture Volume ZC Switch", WM8960_LINVOL, WM8960_RINVOL,
 	6, 1, 0),
 SOC_DOUBLE_R("Capture Switch", WM8960_LINVOL, WM8960_RINVOL,
 	7, 1, 1),
+
+SOC_SINGLE_TLV("Left Input Boost Mixer LINPUT3 Volume",
+	       WM8960_INBMIX1, 4, 7, 0, lineinboost_tlv),
+SOC_SINGLE_TLV("Left Input Boost Mixer LINPUT2 Volume",
+	       WM8960_INBMIX1, 1, 7, 0, lineinboost_tlv),
+SOC_SINGLE_TLV("Right Input Boost Mixer RINPUT3 Volume",
+	       WM8960_INBMIX2, 4, 7, 0, lineinboost_tlv),
+SOC_SINGLE_TLV("Right Input Boost Mixer RINPUT2 Volume",
+	       WM8960_INBMIX2, 1, 7, 0, lineinboost_tlv),
+SOC_SINGLE_TLV("Right Input Boost Mixer RINPUT1 Volume",
+		WM8960_RINPATH, 4, 3, 0, micboost_tlv),
+SOC_SINGLE_TLV("Left Input Boost Mixer LINPUT1 Volume",
+		WM8960_LINPATH, 4, 3, 0, micboost_tlv),
+
 
 SOC_DOUBLE_R_TLV("Playback Volume", WM8960_LDAC, WM8960_RDAC,
 		 0, 255, 0, dac_tlv),
@@ -326,8 +346,8 @@ static const struct snd_soc_dapm_route audio_paths[] = {
 	{ "Left Boost Mixer", "LINPUT2 Switch", "LINPUT2" },
 	{ "Left Boost Mixer", "LINPUT3 Switch", "LINPUT3" },
 
-	{ "Left Input Mixer", "Boost Switch", "Left Boost Mixer", },
-	{ "Left Input Mixer", NULL, "LINPUT1", },  /* Really Boost Switch */
+	{ "Left Input Mixer", "Boost Switch", "Left Boost Mixer" },
+	{ "Left Input Mixer", "Boost Switch", "LINPUT1" },  /* Really Boost Switch */
 	{ "Left Input Mixer", NULL, "LINPUT2" },
 	{ "Left Input Mixer", NULL, "LINPUT3" },
 
@@ -335,8 +355,8 @@ static const struct snd_soc_dapm_route audio_paths[] = {
 	{ "Right Boost Mixer", "RINPUT2 Switch", "RINPUT2" },
 	{ "Right Boost Mixer", "RINPUT3 Switch", "RINPUT3" },
 
-	{ "Right Input Mixer", "Boost Switch", "Right Boost Mixer", },
-	{ "Right Input Mixer", NULL, "RINPUT1", },  /* Really Boost Switch */
+	{ "Right Input Mixer", "Boost Switch", "Right Boost Mixer" },
+	{ "Right Input Mixer", "Boost Switch", "RINPUT1" },  /* Really Boost Switch */
 	{ "Right Input Mixer", NULL, "RINPUT2" },
 	{ "Right Input Mixer", NULL, "RINPUT3" },
 
@@ -909,6 +929,7 @@ static int wm8960_resume(struct snd_soc_codec *codec)
 	u8 data[2];
 	u16 *cache = codec->reg_cache;
 
+	pr_info("%s: pqian \n", __FUNCTION__);
 	/* Sync reg_cache with the hardware */
 	for (i = 0; i < ARRAY_SIZE(wm8960_reg); i++) {
 		data[0] = (i << 1) | ((cache[i] >> 8) & 0x0001);
