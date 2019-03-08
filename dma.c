@@ -14,7 +14,6 @@
  *  option) any later version.
  */
 
-#define DEBUG    1
 #include <linux/module.h>
 #include <linux/init.h>
 #include <linux/io.h>
@@ -78,7 +77,7 @@ static void dma_enqueue(struct snd_pcm_substream *substream)
 	unsigned int limit;
 	int ret;
 
-	pr_debug("Entered %s\n", __func__);
+	pr_info("Entered %s\n", __func__);
 
 	if (s3c_dma_has_circular())
 		limit = (prtd->dma_end - prtd->dma_start) / prtd->dma_period;
@@ -151,7 +150,7 @@ static int dma_hw_params(struct snd_pcm_substream *substream,
 	int ret = 0;
 
 
-	pr_debug("Entered %s\n", __func__);
+	pr_info("Entered %s\n", __func__);
 
 	/* return if this is a bufferless transfer e.g.
 	 * codec <--> BT codec or GSM modem -- lg FIXME */
@@ -222,7 +221,7 @@ static int dma_prepare(struct snd_pcm_substream *substream)
 	struct runtime_data *prtd = substream->runtime->private_data;
 	int ret = 0;
 
-	pr_debug("Entered %s\n", __func__);
+	pr_info("Entered %s\n", __func__);
 
 	/* return if this is a bufferless transfer e.g.
 	 * codec <--> BT codec or GSM modem -- lg FIXME */
@@ -260,7 +259,7 @@ static int dma_trigger(struct snd_pcm_substream *substream, int cmd)
 	struct runtime_data *prtd = substream->runtime->private_data;
 	int ret = 0;
 
-	pr_debug("Entered %s\n", __func__);
+	pr_info("Entered %s\n", __func__);
 
 	spin_lock(&prtd->lock);
 

@@ -530,6 +530,7 @@ static int i2s_set_sysclk(struct snd_soc_dai *dai,
 				} else {
 					i2s->rclk_srcrate =
 						clk_get_rate(i2s->op_clk);
+					dev_err(&i2s->pdev->dev,"%s:%d error get rate\n", __func__, __LINE__);
 					return 0;
 				}
 			}
