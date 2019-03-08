@@ -940,6 +940,7 @@ static int i2s_set_clkdiv(struct snd_soc_dai *dai,
 				i2s->addr + I2SPSR);
 		} else {
 				writel(0x0, i2s->addr + I2SPSR);
+		}
 		break;
 	default:
 		dev_err(&i2s->pdev->dev,

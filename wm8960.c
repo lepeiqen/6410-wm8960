@@ -160,12 +160,6 @@ static const DECLARE_TLV_DB_SCALE(adc_tlv, -9750, 50, 1);
 static const DECLARE_TLV_DB_SCALE(dac_tlv, -12750, 50, 1);
 static const DECLARE_TLV_DB_SCALE(bypass_tlv, -2100, 300, 0);
 static const DECLARE_TLV_DB_SCALE(out_tlv, -12100, 100, 1);
-static const DECLARE_TLV_DB_SCALE(lineinboost_tlv, -1500, 300, 1);
-static const unsigned int micboost_tlv[] = {
-		TLV_DB_RANGE_HEAD(2),
-		0, 1, TLV_DB_SCALE_ITEM(0, 1300, 0),
-		2, 3, TLV_DB_SCALE_ITEM(2000, 900, 0),
-};
 
 static const struct snd_kcontrol_new wm8960_snd_controls[] = {
 SOC_DOUBLE_R_TLV("Capture Volume", WM8960_LINVOL, WM8960_RINVOL,
@@ -174,19 +168,6 @@ SOC_DOUBLE_R("Capture Volume ZC Switch", WM8960_LINVOL, WM8960_RINVOL,
 	6, 1, 0),
 SOC_DOUBLE_R("Capture Switch", WM8960_LINVOL, WM8960_RINVOL,
 	7, 1, 1),
-
-SOC_SINGLE_TLV("Left Input Boost Mixer LINPUT3 Volume",
-	       WM8960_INBMIX1, 4, 7, 0, lineinboost_tlv),
-SOC_SINGLE_TLV("Left Input Boost Mixer LINPUT2 Volume",
-	       WM8960_INBMIX1, 1, 7, 0, lineinboost_tlv),
-SOC_SINGLE_TLV("Right Input Boost Mixer RINPUT3 Volume",
-	       WM8960_INBMIX2, 4, 7, 0, lineinboost_tlv),
-SOC_SINGLE_TLV("Right Input Boost Mixer RINPUT2 Volume",
-	       WM8960_INBMIX2, 1, 7, 0, lineinboost_tlv),
-SOC_SINGLE_TLV("Right Input Boost Mixer RINPUT1 Volume",
-		WM8960_RINPATH, 4, 3, 0, micboost_tlv),
-SOC_SINGLE_TLV("Left Input Boost Mixer LINPUT1 Volume",
-		WM8960_LINPATH, 4, 3, 0, micboost_tlv),
 
 
 SOC_DOUBLE_R_TLV("Playback Volume", WM8960_LDAC, WM8960_RDAC,
@@ -347,7 +328,7 @@ static const struct snd_soc_dapm_route audio_paths[] = {
 	{ "Left Boost Mixer", "LINPUT3 Switch", "LINPUT3" },
 
 	{ "Left Input Mixer", "Boost Switch", "Left Boost Mixer" },
-	{ "Left Input Mixer", "Boost Switch", "LINPUT1" },  /* Really Boost Switch */
+	{ "Left Input Mixer", "NULL", "LINPUT1" },  /* Really Boost Switch */
 	{ "Left Input Mixer", NULL, "LINPUT2" },
 	{ "Left Input Mixer", NULL, "LINPUT3" },
 
@@ -356,7 +337,7 @@ static const struct snd_soc_dapm_route audio_paths[] = {
 	{ "Right Boost Mixer", "RINPUT3 Switch", "RINPUT3" },
 
 	{ "Right Input Mixer", "Boost Switch", "Right Boost Mixer" },
-	{ "Right Input Mixer", "Boost Switch", "RINPUT1" },  /* Really Boost Switch */
+	{ "Right Input Mixer", "NULL", "RINPUT1" },  /* Really Boost Switch */
 	{ "Right Input Mixer", NULL, "RINPUT2" },
 	{ "Right Input Mixer", NULL, "RINPUT3" },
 
