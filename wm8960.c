@@ -328,7 +328,7 @@ static const struct snd_soc_dapm_route audio_paths[] = {
 	{ "Left Boost Mixer", "LINPUT3 Switch", "LINPUT3" },
 
 	{ "Left Input Mixer", "Boost Switch", "Left Boost Mixer" },
-	{ "Left Input Mixer", "NULL", "LINPUT1" },  /* Really Boost Switch */
+	{ "Left Input Mixer", NULL, "LINPUT1" },  /* Really Boost Switch */
 	{ "Left Input Mixer", NULL, "LINPUT2" },
 	{ "Left Input Mixer", NULL, "LINPUT3" },
 
@@ -337,7 +337,7 @@ static const struct snd_soc_dapm_route audio_paths[] = {
 	{ "Right Boost Mixer", "RINPUT3 Switch", "RINPUT3" },
 
 	{ "Right Input Mixer", "Boost Switch", "Right Boost Mixer" },
-	{ "Right Input Mixer", "NULL", "RINPUT1" },  /* Really Boost Switch */
+	{ "Right Input Mixer", NULL, "RINPUT1" },  /* Really Boost Switch */
 	{ "Right Input Mixer", NULL, "RINPUT2" },
 	{ "Right Input Mixer", NULL, "RINPUT3" },
 

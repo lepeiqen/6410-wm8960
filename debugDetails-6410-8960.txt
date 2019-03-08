@@ -9,7 +9,9 @@ i2s.c:	set_clkdiv: add rclk and prediv;
 changes: i2s.c: remove _set_fmt: src=0
 	set_sysclk: rfs wrong value;	
 5. aplay -r8000 -f S16_LE /sdcard/abc.wav  abc.wav is recorded by my notebook;
-
+6. soc-core.c  +2102 read/write logs;
+	soc-dapm.c +2181 : adc/dac logs;
+	dma.c : Entered logs
 
 1. amixer values to set before play:
 amixer cset numid=5 80
@@ -37,6 +39,7 @@ check reg values:
 3. /usr/bin/amixer aplay arecord
 
 other cmds: 
+aplay -l/L; man aplay/arecord;
 jobs 
 fg %n
 kill %n
