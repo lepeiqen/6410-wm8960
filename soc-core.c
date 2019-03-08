@@ -22,7 +22,6 @@
  *   o Support TDM on PCM and I2S
  */
 
-#define DEBUG    1
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/init.h>
@@ -1229,7 +1228,7 @@ static int soc_bind_dai_link(struct snd_soc_card *card, int num)
 
 	if (rtd->complete)
 		return 1;
-	dev_dbg(card->dev, "binding %s at idx %d\n", dai_link->name, num);
+	dev_info(card->dev, "binding %s at idx %d\n", dai_link->name, num);
 
 	/* do we already have the CPU DAI for this link ? */
 	if (rtd->cpu_dai) {
@@ -1246,7 +1245,7 @@ static int soc_bind_dai_link(struct snd_soc_card *card, int num)
 			goto find_codec;
 		}
 	}
-	dev_dbg(card->dev, "CPU DAI %s not registered\n",
+	dev_err(card->dev, "CPU DAI %s not registered\n",
 			dai_link->cpu_dai_name);
 
 find_codec:
@@ -1268,13 +1267,13 @@ find_codec:
 					goto find_platform;
 				}
 			}
-			dev_dbg(card->dev, "CODEC DAI %s not registered\n",
+			dev_err(card->dev, "CODEC DAI %s not registered\n",
 					dai_link->codec_dai_name);
 
 			goto find_platform;
 		}
 	}
-	dev_dbg(card->dev, "CODEC %s not registered\n",
+	dev_err(card->dev, "CODEC %s not registered\n",
 			dai_link->codec_name);
 
 find_platform:
@@ -1290,7 +1289,7 @@ find_platform:
 		}
 	}
 
-	dev_dbg(card->dev, "platform %s not registered\n",
+	dev_err(card->dev, "platform %s not registered\n",
 			dai_link->platform_name);
 	return 0;
 
@@ -1509,7 +1508,7 @@ static int soc_probe_dai_link(struct snd_soc_card *card, int num)
 	struct snd_soc_dai *codec_dai = rtd->codec_dai, *cpu_dai = rtd->cpu_dai;
 	int ret;
 
-	dev_dbg(card->dev, "probe %s dai link %d\n", card->name, num);
+	dev_info(card->dev, "probe %s dai link %d\n", card->name, num);
 
 	/* config components */
 	codec_dai->codec = codec;
@@ -1986,7 +1985,7 @@ static int soc_new_pcm(struct snd_soc_pcm_runtime *rtd, int num)
 	if (codec_dai->driver->capture.channels_min)
 		capture = 1;
 
-	dev_dbg(rtd->card->dev, "registered pcm #%d %s\n",num,new_name);
+	dev_info(rtd->card->dev, "registered pcm #%d %s\n",num,new_name);
 	ret = snd_pcm_new(rtd->card->snd_card, new_name,
 			num, playback, capture, &pcm);
 	if (ret < 0) {
@@ -3132,7 +3131,7 @@ static int snd_soc_register_card(struct snd_soc_card *card)
 	snd_soc_instantiate_cards();
 	mutex_unlock(&client_mutex);
 
-	dev_dbg(card->dev, "Registered card '%s'\n", card->name);
+	dev_info(card->dev, "Registered card '%s'\n", card->name);
 
 	return 0;
 }
@@ -3225,7 +3224,7 @@ int snd_soc_register_dai(struct device *dev,
 {
 	struct snd_soc_dai *dai;
 
-	dev_dbg(dev, "dai register %s\n", dev_name(dev));
+	dev_info(dev, "dai register %s\n", dev_name(dev));
 
 	dai = kzalloc(sizeof(struct snd_soc_dai), GFP_KERNEL);
 	if (dai == NULL)
@@ -3248,7 +3247,7 @@ int snd_soc_register_dai(struct device *dev,
 	snd_soc_instantiate_cards();
 	mutex_unlock(&client_mutex);
 
-	pr_debug("Registered DAI '%s'\n", dai->name);
+	pr_info("Registered DAI '%s'\n", dai->name);
 
 	return 0;
 }
@@ -3292,7 +3291,7 @@ int snd_soc_register_dais(struct device *dev,
 	struct snd_soc_dai *dai;
 	int i, ret = 0;
 
-	dev_dbg(dev, "dai register %s #%Zu\n", dev_name(dev), count);
+	dev_info(dev, "dai register %s #%Zu\n", dev_name(dev), count);
 
 	for (i = 0; i < count; i++) {
 
@@ -3364,7 +3363,7 @@ int snd_soc_register_platform(struct device *dev,
 {
 	struct snd_soc_platform *platform;
 
-	dev_dbg(dev, "platform register %s\n", dev_name(dev));
+	dev_info(dev, "platform register %s\n", dev_name(dev));
 
 	platform = kzalloc(sizeof(struct snd_soc_platform), GFP_KERNEL);
 	if (platform == NULL)
@@ -3385,7 +3384,7 @@ int snd_soc_register_platform(struct device *dev,
 	snd_soc_instantiate_cards();
 	mutex_unlock(&client_mutex);
 
-	pr_debug("Registered platform '%s'\n", platform->name);
+	pr_info("Registered platform '%s'\n", platform->name);
 
 	return 0;
 }
@@ -3464,7 +3463,7 @@ int snd_soc_register_codec(struct device *dev,
 	struct snd_soc_codec *codec;
 	int ret, i;
 
-	dev_dbg(dev, "codec register %s\n", dev_name(dev));
+	dev_info(dev, "codec register %s\n", dev_name(dev));
 
 	codec = kzalloc(sizeof(struct snd_soc_codec), GFP_KERNEL);
 	if (codec == NULL)
@@ -3526,7 +3525,7 @@ int snd_soc_register_codec(struct device *dev,
 	snd_soc_instantiate_cards();
 	mutex_unlock(&client_mutex);
 
-	pr_debug("Registered codec '%s'\n", codec->name);
+	pr_info("Registered codec '%s'\n", codec->name);
 	return 0;
 
 fail:

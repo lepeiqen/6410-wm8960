@@ -129,12 +129,12 @@ static int mini210_hw_params(struct snd_pcm_substream *substream, struct snd_pcm
 	}
 
 	mul = rate * rclk_div;
-	ret = snd_soc_dai_set_clkdiv( codec_dai, WM8960_DCLKDIV, mul );//
+/*	ret = snd_soc_dai_set_clkdiv( codec_dai, WM8960_DCLKDIV, mul );//
 	if( ret < 0 ){
 		dprintk( "-%s(): Codec DCLKDIV setting error, %d\n", __FUNCTION__, ret );
 		return ret;
 	}
-	
+	*/
 	prescaler_div =  sl / mul;
 	prescaler_div--;
 	ret = snd_soc_dai_set_clkdiv( cpu_dai, 0x3, prescaler_div );//SAMSUNG_I2S_DIV_PRESCALER:

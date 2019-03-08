@@ -508,7 +508,7 @@ static int i2s_set_sysclk(struct snd_soc_dai *dai,
 		if (dir == SND_SOC_CLOCK_IN)
 			mod |= MOD_CDCLKCON;
 		else
-			mod &= ~MOD_CDCLKCON;// using internal clk as master src;lpq
+			mod &= ~MOD_CDCLKCON; // using internal clk as master src;lpq
 
 		//i2s->rfs = rfs;
 		break;
@@ -530,7 +530,7 @@ static int i2s_set_sysclk(struct snd_soc_dai *dai,
 				} else {
 					i2s->rclk_srcrate =
 						clk_get_rate(i2s->op_clk);
-					dev_err(&i2s->pdev->dev,"%s:%d error get rate\n", __func__, __LINE__);
+					dev_err(&i2s->pdev->dev, "%s:%d!\n",__func__, __LINE__);//run here;
 					return 0;
 				}
 			}
@@ -554,6 +554,7 @@ static int i2s_set_sysclk(struct snd_soc_dai *dai,
 			/* Call can't be on the active DAI */
 			i2s->op_clk = other->op_clk;
 			i2s->rclk_srcrate = other->rclk_srcrate;
+			dev_err(&i2s->pdev->dev, "%s:%d!\n",__func__, __LINE__);
 			return 0;
 		}
 
@@ -567,7 +568,6 @@ static int i2s_set_sysclk(struct snd_soc_dai *dai,
 		dev_err(&i2s->pdev->dev, "We don't serve that!\n");
 		return -EINVAL;
 	}
-
 	pr_info("RCLK_SRC=%luHz \n", i2s->rclk_srcrate);
 	writel(mod, i2s->addr + I2SMOD);
 
@@ -644,7 +644,7 @@ static int i2s_set_fmt(struct snd_soc_dai *dai,
 	}
 
 	mod &= ~(MOD_SDF_MASK | MOD_LR_RLOW | MOD_SLAVE);
-	mod |= tmp;
+	mod |= tmp | MOD_TXRX;
 	writel(mod, i2s->addr + I2SMOD);
 
 	return 0;
@@ -913,6 +913,8 @@ static int i2s_set_clkdiv(struct snd_soc_dai *dai,
 		reg = readl(i2s->addr + I2SMOD);
 		reg &= ~S3C6410_IISMOD_BCLK_MASK;
 		writel(reg | div, i2s->addr + I2SMOD);
+
+		pr_info("%s:BCLK MOD=%08x\n", __FUNCTION__, readl(i2s->addr + I2SMOD));
 		break;
 	case SAMSUNG_I2S_DIV_RCLK:
 		switch (div) {
@@ -934,6 +936,8 @@ static int i2s_set_clkdiv(struct snd_soc_dai *dai,
 		reg = readl(i2s->addr + I2SMOD);
 		reg &= ~S3C6410_IISMOD_RCLK_MASK;
 		writel(reg | div, i2s->addr + I2SMOD);
+
+		pr_info("%s:RCLK MOD=%08x\n", __FUNCTION__, readl(i2s->addr + I2SMOD));
 		break;
 	case SAMSUNG_I2S_DIV_PRESCALER:
 		if (div >= 0) {
@@ -942,6 +946,7 @@ static int i2s_set_clkdiv(struct snd_soc_dai *dai,
 		} else {
 				writel(0x0, i2s->addr + I2SPSR);
 		}
+		pr_info("%s: PSR=%08x\n", __FUNCTION__, readl(i2s->addr + I2SPSR));
 		break;
 	default:
 		dev_err(&i2s->pdev->dev,

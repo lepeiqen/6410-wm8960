@@ -84,17 +84,18 @@ static void dma_enqueue(struct snd_pcm_substream *substream)
 	else
 		limit = prtd->dma_limit;
 
-	pr_debug("%s: loaded %d, limit %d\n",
+	pr_info("%s: loaded %d, limit %d\n",
 				__func__, prtd->dma_loaded, limit);
+	pr_info("++++++++ dma_period: %d\n", prtd->dma_period);//lpq
 
 	while (prtd->dma_loaded < limit) {
 		unsigned long len = prtd->dma_period;
 
-		pr_debug("dma_loaded: %d\n", prtd->dma_loaded);
+		pr_info("dma_loaded: %d\n", prtd->dma_loaded);
 
 		if ((pos + len) > prtd->dma_end) {
 			len  = prtd->dma_end - pos;
-			pr_debug("%s: corrected dma len %ld\n", __func__, len);
+			pr_info("%s: corrected dma len %ld\n", __func__, len);
 		}
 
 		ret = s3c2410_dma_enqueue(prtd->params->channel,
@@ -163,7 +164,7 @@ static int dma_hw_params(struct snd_pcm_substream *substream,
 		/* prepare DMA */
 		prtd->params = dma;
 
-		pr_debug("params %p, client %p, channel %d\n", prtd->params,
+		pr_info("params %p, client %p, channel %d\n", prtd->params,
 			prtd->params->client, prtd->params->channel);
 
 		ret = s3c2410_dma_request(prtd->params->channel,
@@ -195,6 +196,7 @@ static int dma_hw_params(struct snd_pcm_substream *substream,
 	prtd->dma_pos = prtd->dma_start;
 	prtd->dma_end = prtd->dma_start + totbytes;
 	spin_unlock_irq(&prtd->lock);
+	pr_info("+++++++ dma_bytes: %lu\n", totbytes);//lpq
 
 	return 0;
 }
@@ -203,7 +205,7 @@ static int dma_hw_free(struct snd_pcm_substream *substream)
 {
 	struct runtime_data *prtd = substream->runtime->private_data;
 
-	pr_debug("Entered %s\n", __func__);
+	pr_info("Entered %s\n", __func__);
 
 	/* TODO - do we need to ensure DMA flushed */
 	snd_pcm_set_runtime_buffer(substream, NULL);
@@ -296,7 +298,7 @@ dma_pointer(struct snd_pcm_substream *substream)
 	unsigned long res;
 	dma_addr_t src, dst;
 
-	pr_debug("Entered %s\n", __func__);
+	//pr_info("Entered %s\n", __func__);
 
 	spin_lock(&prtd->lock);
 	s3c2410_dma_getposition(prtd->params->channel, &src, &dst);
@@ -308,7 +310,7 @@ dma_pointer(struct snd_pcm_substream *substream)
 
 	spin_unlock(&prtd->lock);
 
-	pr_debug("Pointer %x %x\n", src, dst);
+	//pr_info("Pointer %x %x\n", src, dst);
 
 	/* we seem to be getting the odd error from the pcm library due
 	 * to out-of-bounds pointers. this is maybe due to the dma engine
@@ -329,7 +331,7 @@ static int dma_open(struct snd_pcm_substream *substream)
 	struct snd_pcm_runtime *runtime = substream->runtime;
 	struct runtime_data *prtd;
 
-	pr_debug("Entered %s\n", __func__);
+	pr_info("Entered %s\n", __func__);
 
 	snd_pcm_hw_constraint_integer(runtime, SNDRV_PCM_HW_PARAM_PERIODS);
 	snd_soc_set_runtime_hwparams(substream, &dma_hardware);
@@ -349,10 +351,10 @@ static int dma_close(struct snd_pcm_substream *substream)
 	struct snd_pcm_runtime *runtime = substream->runtime;
 	struct runtime_data *prtd = runtime->private_data;
 
-	pr_debug("Entered %s\n", __func__);
+	pr_info("Entered %s\n", __func__);
 
 	if (!prtd)
-		pr_debug("dma_close called with prtd == NULL\n");
+		pr_info("dma_close called with prtd == NULL\n");
 
 	kfree(prtd);
 
@@ -364,7 +366,7 @@ static int dma_mmap(struct snd_pcm_substream *substream,
 {
 	struct snd_pcm_runtime *runtime = substream->runtime;
 
-	pr_debug("Entered %s\n", __func__);
+	pr_info("Entered %s\n", __func__);
 
 	return dma_mmap_writecombine(substream->pcm->card->dev, vma,
 				     runtime->dma_area,
@@ -390,7 +392,7 @@ static int preallocate_dma_buffer(struct snd_pcm *pcm, int stream)
 	struct snd_dma_buffer *buf = &substream->dma_buffer;
 	size_t size = dma_hardware.buffer_bytes_max;
 
-	pr_debug("Entered %s\n", __func__);
+	pr_info("Entered %s\n", __func__);
 
 	buf->dev.type = SNDRV_DMA_TYPE_DEV;
 	buf->dev.dev = pcm->card->dev;
@@ -409,7 +411,7 @@ static void dma_free_dma_buffers(struct snd_pcm *pcm)
 	struct snd_dma_buffer *buf;
 	int stream;
 
-	pr_debug("Entered %s\n", __func__);
+	pr_info("Entered %s\n", __func__);
 
 	for (stream = 0; stream < 2; stream++) {
 		substream = pcm->streams[stream].substream;
@@ -433,7 +435,7 @@ static int dma_new(struct snd_card *card,
 {
 	int ret = 0;
 
-	pr_debug("Entered %s\n", __func__);
+	pr_info("Entered %s\n", __func__);
 
 	if (!card->dev->dma_mask)
 		card->dev->dma_mask = &dma_mask;

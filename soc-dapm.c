@@ -110,7 +110,7 @@ static void pop_dbg(struct device *dev, u32 pop_time, const char *fmt, ...)
 
 	va_start(args, fmt);
 	vsnprintf(buf, PAGE_SIZE, fmt, args);
-	dev_info(dev, "%s", buf);
+	dev_info(dev, "dapm: %s", buf);
 	va_end(args);
 
 	kfree(buf);
@@ -140,16 +140,16 @@ static int snd_soc_dapm_set_bias_level(struct snd_soc_card *card,
 
 	switch (level) {
 	case SND_SOC_BIAS_ON:
-		dev_dbg(dapm->dev, "Setting full bias\n");
+		dev_info(dapm->dev, "dapm: Setting full bias\n");
 		break;
 	case SND_SOC_BIAS_PREPARE:
-		dev_dbg(dapm->dev, "Setting bias prepare\n");
+		dev_info(dapm->dev, "dapm: Setting bias prepare\n");
 		break;
 	case SND_SOC_BIAS_STANDBY:
-		dev_dbg(dapm->dev, "Setting standby bias\n");
+		dev_info(dapm->dev, "dapm: Setting standby bias\n");
 		break;
 	case SND_SOC_BIAS_OFF:
-		dev_dbg(dapm->dev, "Setting bias off\n");
+		dev_info(dapm->dev, "dapm: Setting bias off\n");
 		break;
 	default:
 		dev_err(dapm->dev, "Setting invalid bias %d\n", level);
@@ -355,7 +355,7 @@ static int dapm_update_bits(struct snd_soc_dapm_widget *widget)
 		pop_wait(card->pop_time);
 		snd_soc_write(codec, widget->reg, new);
 	}
-	dev_dbg(dapm->dev, "reg %x old %x new %x change %d\n", widget->reg,
+	dev_info(dapm->dev, "dapm: reg %x old %x new %x change %d\n", widget->reg,
 		old, new, change);
 	return change;
 }
@@ -485,7 +485,7 @@ static int snd_soc_dapm_suspend_check(struct snd_soc_dapm_widget *widget)
 	case SNDRV_CTL_POWER_D3hot:
 	case SNDRV_CTL_POWER_D3cold:
 		if (widget->ignore_suspend)
-			dev_dbg(widget->dapm->dev, "%s ignoring suspend\n",
+			dev_info(widget->dapm->dev, "dapm: %s ignoring suspend\n",
 				widget->name);
 		return widget->ignore_suspend;
 	default:
@@ -617,7 +617,7 @@ static int dapm_generic_apply_power(struct snd_soc_dapm_widget *w)
 
 	/* call any power change event handlers */
 	if (w->event)
-		dev_dbg(w->dapm->dev, "power %s event for %s flags %x\n",
+		dev_info(w->dapm->dev, "dapm: power %s event for %s flags %x\n",
 			 w->power ? "on" : "off",
 			 w->name, w->event_flags);
 
@@ -669,6 +669,7 @@ static int dapm_generic_check_power(struct snd_soc_dapm_widget *w)
 	dapm_clear_walk(w->dapm);
 	out = is_connected_output_ep(w);
 	dapm_clear_walk(w->dapm);
+	//dev_info(w->dapm->dev, "dapm: %s %s out:%d in:%d\n", __func__, w->name, out, in);//add lpq
 	return out != 0 && in != 0;
 }
 
@@ -1422,7 +1423,7 @@ static int snd_soc_dapm_set_pin(struct snd_soc_dapm_context *dapm,
 		if (w->dapm != dapm)
 			continue;
 		if (!strcmp(w->name, pin)) {
-			dev_dbg(w->dapm->dev, "dapm: pin %s = %d\n",
+			dev_info(w->dapm->dev, "dapm: pin %s = %d\n",
 				pin, status);
 			w->connected = status;
 			/* Allow disabling of forced pins */
@@ -2180,7 +2181,7 @@ static void soc_dapm_stream_event(struct snd_soc_dapm_context *dapm,
 	{
 		if (!w->sname || w->dapm != dapm)
 			continue;
-		dev_info(w->dapm->dev, "widget %s\n %s stream %s event %d\n",
+		dev_info(w->dapm->dev, "dapm: widget %s\n %s stream %s event %d\n",
 			w->name, w->sname, stream, event);
 		if (strstr(w->sname, stream)) {
 			switch(event) {
@@ -2265,7 +2266,7 @@ int snd_soc_dapm_force_enable_pin(struct snd_soc_dapm_context *dapm,
 		if (w->dapm != dapm)
 			continue;
 		if (!strcmp(w->name, pin)) {
-			dev_dbg(w->dapm->dev,
+			dev_info(w->dapm->dev,
 				"dapm: force enable pin %s\n", pin);
 			w->connected = 1;
 			w->force = 1;
