@@ -1,0 +1,1004 @@
+[21-33-06]Skip block 0x121
+[21-33-38]Skip block 0x358
+[21-33-50]Skip block 0x431
+[21-33-58]Skip block 0x4cb
+[21-34-00]Installing ubifs-image succeed
+[21-34-00]OS 'LINUX' Installed
+[21-35-52]Load Kernel...
+[21-35-54]Uncompressing Linux... done, booting the kernel.
+[21-35-54]Initializing cgroup subsys cpu
+[21-35-54]Linux version 2.6.38-FriendlyARM (lpq@lpq-Thurley) (gcc version 4.5.1 (ctng-1.8.1-FA) ) #24 PREEMPT Mon Nov 19 21:30:26 CST 2018
+[21-35-54]CPU: ARMv6-compatible processor [410fb766] revision 6 (ARMv7), cr=00c5387f
+[21-35-54]CPU: VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+[21-35-54]Machine: MINI6410
+[21-35-54]MINI6410: S70 selected
+[21-35-54]Memory policy: ECC disabled, Data cache writeback
+[21-35-54]CPU S3C6410 (id 0x36410101)
+[21-35-54]S3C24XX Clocks, Copyright 2004 Simtec Electronics
+[21-35-54]camera: no parent clock specified
+[21-35-54]S3C64XX: PLL settings, A=532000000, M=266000000, E=84666666
+[21-35-54]S3C64XX: HCLK2=266000000, HCLK=133000000, PCLK=66500000
+[21-35-54]mout_apll: source is fout_apll (1), rate is 532000000
+[21-35-54]mout_epll: source is epll (1), rate is 84666666
+[21-35-54]mout_mpll: source is mpll (1), rate is 266000000
+[21-35-54]mmc_bus: source is mout_epll (0), rate is 84666666
+[21-35-54]mmc_bus: source is mout_epll (0), rate is 84666666
+[21-35-54]mmc_bus: source is mout_epll (0), rate is 84666666
+[21-35-54]usb-bus-host: source is clk_48m (0), rate is 48000000
+[21-35-54]uclk1: source is mout_epll (0), rate is 84666666
+[21-35-54]spi-bus: source is mout_epll (0), rate is 84666666
+[21-35-54]spi-bus: source is mout_epll (0), rate is 84666666
+[21-35-54]audio-bus: source is mout_epll (0), rate is 84666666
+[21-35-54]audio-bus: source is mout_epll (0), rate is 84666666
+[21-35-54]audio-bus: source is mout_epll (0), rate is 84666666
+[21-35-54]irda-bus: source is mout_epll (0), rate is 84666666
+[21-35-54]camera: no parent clock specified
+[21-35-54]s3c64xx: 10485760 bytes SDRAM reserved for fimc at 0x5f5f8000
+[21-35-54]s3c64xx: 8388608 bytes SDRAM reserved for pp at 0x5edf8000
+[21-35-54]s3c64xx: 8388608 bytes SDRAM reserved for tv at 0x5e5f8000
+[21-35-54]s3c64xx: 6291456 bytes SDRAM reserved for mfc at 0x5dff8000
+[21-35-54]s3c64xx: 4194304 bytes SDRAM reserved for jpeg at 0x5dbf8000
+[21-35-54]Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 65024
+[21-35-54]Kernel command line: root=ubi0:FriendlyARM-root ubi.mtd=2 rootfstype=ubifs init=/linuxrc console=ttySAC0,115200 lcd=S70
+[21-35-54]PID hash table entries: 1024 (order: 0, 4096 bytes)
+[21-35-54]Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+[21-35-54]Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+[21-35-54]Memory: 256MB = 256MB total
+[21-35-54]Memory: 215160k/215160k available, 46984k reserved, 0K highmem
+[21-35-54]Virtual kernel memory layout:
+[21-35-54]    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[21-35-54]    fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+[21-35-54]    DMA     : 0xff000000 - 0xffe00000   (  14 MB)
+[21-35-54]    vmalloc : 0xd0800000 - 0xf6000000   ( 600 MB)
+[21-35-54]    lowmem  : 0xc0000000 - 0xd0000000   ( 256 MB)
+[21-35-54]    modules : 0xbf000000 - 0xc0000000   (  16 MB)
+[21-35-54]      .init : 0xc0008000 - 0xc0168000   (1408 kB)
+[21-35-54]      .text : 0xc0168000 - 0xc0718c9c   (5828 kB)
+[21-35-54]      .data : 0xc071a000 - 0xc075ed00   ( 276 kB)
+[21-35-54]SLUB: Genslabs=13, HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[21-35-54]Preemptable hierarchical RCU implementation.
+[21-35-54]        RCU-based detection of stalled CPUs is disabled.
+[21-35-54]        Verbose stalled-CPUs detection is disabled.
+[21-35-54]NR_IRQS:246
+[21-35-54]VIC @f6000000: id 0x00041192, vendor 0x41
+[21-35-54]VIC @f6010000: id 0x00041192, vendor 0x41
+[21-35-54]Console: colour dummy device 80x30
+[21-35-54]console [ttySAC0] enabled
+[21-35-54]Calibrating delay loop... 530.84 BogoMIPS (lpj=2654208)
+[21-35-54]pid_max: default: 32768 minimum: 301
+[21-35-54]Mount-cache hash table entries: 512
+[21-35-54]CPU: Testing write buffer coherency: ok
+[21-35-54]NET: Registered protocol family 16
+[21-35-54]s3c64xx_dma_init: Registering DMA channels
+[21-35-54]PL080: IRQ 73, at d0808000, channels 0..8
+[21-35-54]PL080: IRQ 74, at d080c000, channels 8..16
+[21-35-54]S3C6410: Initialising architecture
+[21-35-54]bio: create slab <bio-0> at 0
+[21-35-54]SCSI subsystem initialized
+[21-35-54]usbcore: registered new interface driver usbfs
+[21-35-54]usbcore: registered new interface driver hub
+[21-35-54]usbcore: registered new device driver usb
+[21-35-54]s3c-i2c s3c2440-i2c: slave address 0x10
+[21-35-54]s3c-i2c s3c2440-i2c: bus frequency set to 64 KHz
+[21-35-54]s3c-i2c s3c2440-i2c: i2c-0: S3C I2C adapter
+[21-35-54]Advanced Linux Sound Architecture Driver Version 1.0.23.
+[21-35-55]NET: Registered protocol family 2
+[21-35-55]IP route cache hash table entries: 2048 (order: 1, 8192 bytes)
+[21-35-55]TCP established hash table entries: 8192 (order: 4, 65536 bytes)
+[21-35-55]TCP bind hash table entries: 8192 (order: 5, 163840 bytes)
+[21-35-55]TCP: Hash tables configured (established 8192 bind 8192)
+[21-35-55]TCP reno registered
+[21-35-55]UDP hash table entries: 128 (order: 0, 6144 bytes)
+[21-35-55]UDP-Lite hash table entries: 128 (order: 0, 6144 bytes)
+[21-35-55]NET: Registered protocol family 1
+[21-35-55]RPC: Registered udp transport module.
+[21-35-55]RPC: Registered tcp transport module.
+[21-35-55]RPC: Registered tcp NFSv4.1 backchannel transport module.
+[21-35-55]NetWinder Floating Point Emulator V0.97 (double precision)
+[21-35-55]squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[21-35-55]msgmni has been set to 420
+[21-35-55]io scheduler noop registered (default)
+[21-35-55]io scheduler cfq registered
+[21-35-55]S3C_LCD clock got enabled :: 133.000 Mhz
+[21-35-55]LCD TYPE :: Mini6410 will be initialized
+[21-35-55]Window[0] - FB1: map_video_memory: clear ff000000:00177000
+[21-35-55]            FB1: map_video_memory: dma=5cc00000 cpu=ff000000 size=00177000
+[21-35-55]Window[0] - FB2: map_video_memory: clear ff0bb800:000bb800
+[21-35-55]            FB2: map_video_memory: dma=5ccbb800 cpu=ff0bb800 size=000bb800
+[21-35-55]Console: switching to colour frame buffer device 100x30
+[21-35-55]fb0: s3cfb frame buffer device
+[21-35-55]Window[1] - FB1: map_video_memory: clear ff200000:00177000
+[21-35-55]            FB1: map_video_memory: dma=5ce00000 cpu=ff200000 size=00177000
+[21-35-55]Window[1] - FB2: map_video_memory: clear ff2bb800:000bb800
+[21-35-55]            FB2: map_video_memory: dma=5cebb800 cpu=ff2bb800 size=000bb800
+[21-35-55]fb1: s3cfb frame buffer device
+[21-35-55]Window[2] - FB1: map_video_memory: clear ff400000:000bb800
+[21-35-55]            FB1: map_video_memory: dma=5c800000 cpu=ff400000 size=000bb800
+[21-35-55]fb2: s3cfb frame buffer device
+[21-35-55]Window[3] - FB1: map_video_memory: clear ff500000:000bb800
+[21-35-55]            FB1: map_video_memory: dma=5c900000 cpu=ff500000 size=000bb800
+[21-35-55]fb3: s3cfb frame buffer device
+[21-35-55]backlight       initialized
+[21-35-55]s3c6400-uart.0: ttySAC0 at MMIO 0x7f005000 (irq = 16) is a S3C6400/10
+[21-35-55]s3c6400-uart.1: ttySAC1 at MMIO 0x7f005400 (irq = 20) is a S3C6400/10
+[21-35-55]s3c6400-uart.2: ttySAC2 at MMIO 0x7f005800 (irq = 24) is a S3C6400/10
+[21-35-55]s3c6400-uart.3: ttySAC3 at MMIO 0x7f005c00 (irq = 28) is a S3C6400/10
+[21-35-55]leds    initialized
+[21-35-55]buttons initialized
+[21-35-55]pwm     initialized
+[21-35-55]adc     initialized
+[21-35-55]loop: module loaded
+[21-35-55]S3C NAND Driver, (c) 2008 Samsung Electronics
+[21-35-55]S3C NAND Driver is using hardware ECC.
+[21-35-55]NAND device: Manufacturer ID: 0xec, Chip ID: 0xda (Samsung NAND 256MiB 3,3V 8-bit)
+[21-35-55]Creating 3 MTD partitions on "NAND 256MiB 3,3V 8-bit":
+[21-35-55]0x000000000000-0x000000080000 : "Bootloader"
+[21-35-55]0x000000080000-0x000000580000 : "Kernel"
+[21-35-55]0x000000580000-0x000010000000 : "File System"
+[21-35-55]UBI: attaching mtd2 to ubi0
+[21-35-55]UBI: physical eraseblock size:   131072 bytes (128 KiB)
+[21-35-55]UBI: logical eraseblock size:    129024 bytes
+[21-35-55]UBI: smallest flash I/O unit:    2048
+[21-35-55]UBI: sub-page size:              512
+[21-35-55]UBI: VID header offset:          512 (aligned 512)
+[21-35-55]UBI: data offset:                2048
+[21-35-56]UBI: max. sequence number:       0
+[21-35-56]UBI: volume 0 ("FriendlyARM-root") re-sized from 1223 to 1976 LEBs
+[21-35-56]UBI: attached mtd2 to ubi0
+[21-35-56]UBI: MTD device name:            "File System"
+[21-35-56]UBI: MTD device size:            250 MiB
+[21-35-56]UBI: number of good PEBs:        1999
+[21-35-56]UBI: number of bad PEBs:         5
+[21-35-56]UBI: number of corrupted PEBs:   0
+[21-35-56]UBI: max. allowed volumes:       128
+[21-35-56]UBI: wear-leveling threshold:    4096
+[21-35-56]UBI: number of internal volumes: 1
+[21-35-56]UBI: number of user volumes:     1
+[21-35-56]UBI: available PEBs:             0
+[21-35-56]UBI: total number of reserved PEBs: 1999
+[21-35-56]UBI: number of PEBs reserved for bad PEB handling: 19
+[21-35-56]UBI: max/mean erase counter: 1/0
+[21-35-56]UBI: image sequence number:  1114202847
+[21-35-56]UBI: background thread "ubi_bgt0d" started, PID 635
+[21-35-56]PPP generic driver version 2.4.2
+[21-35-56]PPP Deflate Compression module registered
+[21-35-56]PPP BSD Compression module registered
+[21-35-56]PPP MPPE Compression module registered
+[21-35-56]NET: Registered protocol family 24
+[21-35-56]dm9000 Ethernet Driver, V1.31
+[21-35-56]eth0: dm9000a at d0872000,d0c00004 IRQ 108 MAC: 08:90:00:a0:90:90 (platform data)
+[21-35-56]ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[21-35-56]s3c2410-ohci s3c2410-ohci: S3C24XX OHCI
+[21-35-56]s3c2410-ohci s3c2410-ohci: new USB bus registered, assigned bus number 1
+[21-35-56]s3c2410-ohci s3c2410-ohci: irq 79, io mem 0x74300000
+[21-35-56]usb usb1: New USB device found, idVendor=1d6b, idProduct=0001
+[21-35-56]usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[21-35-56]usb usb1: Product: S3C24XX OHCI
+[21-35-56]usb usb1: Manufacturer: Linux 2.6.38-FriendlyARM ohci_hcd
+[21-35-56]usb usb1: SerialNumber: s3c24xx
+[21-35-56]hub 1-0:1.0: USB hub found
+[21-35-56]hub 1-0:1.0: 2 ports detected
+[21-35-56]usbcore: registered new interface driver usbserial
+[21-35-56]USB Serial support registered for generic
+[21-35-56]usbcore: registered new interface driver usbserial_generic
+[21-35-56]usbserial: USB Serial Driver core
+[21-35-56]USB Serial support registered for GSM modem (1-port)
+[21-35-56]usbcore: registered new interface driver option
+[21-35-56]option: v0.7.2:USB Driver for GSM modems
+[21-35-56]USB Serial support registered for aircable
+[21-35-56]usbcore: registered new interface driver aircable
+[21-35-56]USB Serial support registered for ark3116
+[21-35-56]usbcore: registered new interface driver ark3116
+[21-35-56]ark3116:v0.6:USB ARK3116 serial/IrDA driver
+[21-35-56]USB Serial support registered for Belkin / Peracom / GoHubs USB Serial Adapter
+[21-35-56]usbcore: registered new interface driver belkin
+[21-35-56]belkin_sa: v1.3:USB Belkin Serial converter driver
+[21-35-56]USB Serial support registered for ch341-uart
+[21-35-56]usbcore: registered new interface driver ch341
+[21-35-56]USB Serial support registered for cp210x
+[21-35-56]usbcore: registered new interface driver cp210x
+[21-35-56]cp210x: v0.09:Silicon Labs CP210x RS232 serial adaptor driver
+[21-35-56]USB Serial support registered for Reiner SCT Cyberjack USB card reader
+[21-35-56]usbcore: registered new interface driver cyberjack
+[21-35-56]cyberjack: v1.01 Matthias Bruestle
+[21-35-56]cyberjack: REINER SCT cyberJack pinpad/e-com USB Chipcard Reader Driver
+[21-35-56]USB Serial support registered for DeLorme Earthmate USB
+[21-35-56]USB Serial support registered for HID->COM RS232 Adapter
+[21-35-56]USB Serial support registered for Nokia CA-42 V2 Adapter
+[21-35-56]usbcore: registered new interface driver cypress
+[21-35-56]cypress_m8: v1.10:Cypress USB to Serial Driver
+[21-35-56]USB Serial support registered for debug
+[21-35-56]usbcore: registered new interface driver debug
+[21-35-56]USB Serial support registered for Digi 2 port USB adapter
+[21-35-56]USB Serial support registered for Digi 4 port USB adapter
+[21-35-56]usbcore: registered new interface driver digi_acceleport
+[21-35-56]digi_acceleport: v1.80.1.2:Digi AccelePort USB-2/USB-4 Serial Converter driver
+[21-35-56]USB Serial support registered for Edgeport 2 port adapter
+[21-35-56]USB Serial support registered for Edgeport 4 port adapter
+[21-35-56]USB Serial support registered for Edgeport 8 port adapter
+[21-35-56]USB Serial support registered for EPiC device
+[21-35-56]usbcore: registered new interface driver io_edgeport
+[21-35-56]io_edgeport: v2.7:Edgeport USB Serial Driver
+[21-35-56]USB Serial support registered for Edgeport TI 1 port adapter
+[21-35-56]USB Serial support registered for Edgeport TI 2 port adapter
+[21-35-56]usbcore: registered new interface driver io_ti
+[21-35-56]io_ti: v0.7mode043006:Edgeport USB Serial Driver
+[21-35-56]USB Serial support registered for empeg
+[21-35-56]usbcore: registered new interface driver empeg
+[21-35-56]empeg: v1.3:USB Empeg Mark I/II Driver
+[21-35-56]USB Serial support registered for FTDI USB Serial Device
+[21-35-56]usbcore: registered new interface driver ftdi_sio
+[21-35-56]ftdi_sio: v1.6.0:USB FTDI Serial Converters Driver
+[21-35-56]USB Serial support registered for funsoft
+[21-35-56]usbcore: registered new interface driver funsoft
+[21-35-56]USB Serial support registered for Garmin GPS usb/tty
+[21-35-56]usbcore: registered new interface driver garmin_gps
+[21-35-56]garmin_gps: v0.33:garmin gps driver
+[21-35-57]USB Serial support registered for hp4X
+[21-35-57]usbcore: registered new interface driver hp4X
+[21-35-57]hp4x: v1.00:HP4x (48/49) Generic Serial driver
+[21-35-57]USB Serial support registered for PocketPC PDA
+[21-35-57]usbcore: registered new interface driver ipaq
+[21-35-57]ipaq: v1.0:USB PocketPC PDA driver
+[21-35-57]USB Serial support registered for IPWireless converter
+[21-35-57]usbcore: registered new interface driver ipwtty
+[21-35-57]ipw: v0.4:IPWireless tty driver
+[21-35-57]USB Serial support registered for IR Dongle
+[21-35-57]usb 1-1: new full speed USB device using s3c2410-ohci and address 2
+[21-35-57]usbcore: registered new interface driver ir-usb
+[21-35-57]ir_usb: v0.5:USB IR Dongle driver
+[21-35-57]USB Serial support registered for iuu_phoenix
+[21-35-57]usbcore: registered new interface driver iuu_phoenix
+[21-35-57]iuu_phoenix: v0.12:Infinity USB Unlimited Phoenix driver
+[21-35-57]USB Serial support registered for Keyspan - (without firmware)
+[21-35-57]USB Serial support registered for Keyspan 1 port adapter
+[21-35-57]USB Serial support registered for Keyspan 2 port adapter
+[21-35-57]USB Serial support registered for Keyspan 4 port adapter
+[21-35-57]usbcore: registered new interface driver keyspan
+[21-35-57]keyspan: v1.1.5:Keyspan USB to Serial Converter Driver
+[21-35-57]USB Serial support registered for Keyspan PDA
+[21-35-57]USB Serial support registered for Keyspan PDA - (prerenumeration)
+[21-35-57]USB Serial support registered for Xircom / Entregra PGS - (prerenumeration)
+[21-35-57]usbcore: registered new interface driver keyspan_pda
+[21-35-57]keyspan_pda: v1.1:USB Keyspan PDA Converter driver
+[21-35-57]USB Serial support registered for KL5KUSB105D / PalmConnect
+[21-35-57]usbcore: registered new interface driver kl5kusb105d
+[21-35-57]kl5kusb105: v0.4:KLSI KL5KUSB105 chipset USB->Serial Converter driver
+[21-35-57]USB Serial support registered for KOBIL USB smart card terminal
+[21-35-57]usbcore: registered new interface driver kobil
+[21-35-57]kobil_sct: 21/05/2004:KOBIL USB Smart Card Terminal Driver (experimental)
+[21-35-57]USB Serial support registered for MCT U232
+[21-35-57]usbcore: registered new interface driver mct_u232
+[21-35-57]mct_u232: z2.1:Magic Control Technology USB-RS232 converter driver
+[21-35-57]USB Serial support registered for Moschip 2 port adapter
+[21-35-57]mos7720: 2.1:Moschip USB Serial Driver
+[21-35-57]usbcore: registered new interface driver moschip7720
+[21-35-57]USB Serial support registered for Moschip 7840/7820 USB Serial Driver
+[21-35-57]mos7840: 1.3.2:Moschip 7840/7820 USB Serial Driver
+[21-35-57]usb 1-1: New USB device found, idVendor=1a40, idProduct=0101
+[21-35-57]usb 1-1: New USB device strings: Mfr=0, Product=1, SerialNumber=0
+[21-35-57]usb 1-1: Product: USB 2.0 Hub
+[21-35-57]usbcore: registered new interface driver mos7840
+[21-35-57]hub 1-1:1.0: USB hub found
+[21-35-57]USB Serial support registered for moto-modem
+[21-35-57]hub 1-1:1.0: 4 ports detected
+[21-35-57]usbcore: registered new interface driver moto-modem
+[21-35-57]USB Serial support registered for navman
+[21-35-57]usbcore: registered new interface driver navman
+[21-35-57]USB Serial support registered for ZyXEL - omni.net lcd plus usb
+[21-35-57]usbcore: registered new interface driver omninet
+[21-35-57]omninet: v1.1:USB ZyXEL omni.net LCD PLUS Driver
+[21-35-57]USB Serial support registered for opticon
+[21-35-57]usbcore: registered new interface driver opticon
+[21-35-57]USB Serial support registered for oti6858
+[21-35-57]usbcore: registered new interface driver oti6858
+[21-35-57]USB Serial support registered for pl2303
+[21-35-57]usbcore: registered new interface driver pl2303
+[21-35-57]pl2303: Prolific PL2303 USB to serial adaptor driver
+[21-35-57]USB Serial support registered for qcaux
+[21-35-57]usbcore: registered new interface driver qcaux
+[21-35-57]USB Serial support registered for Qualcomm USB modem
+[21-35-57]usbcore: registered new interface driver qcserial
+[21-35-57]safe_serial: v0.1:USB Safe Encapsulated Serial
+[21-35-57]USB Serial support registered for safe_serial
+[21-35-57]usbcore: registered new interface driver safe_serial
+[21-35-57]USB Serial support registered for sam-ba
+[21-35-57]usbcore: registered new interface driver sam-ba
+[21-35-57]sam_ba: v1.0: Atmel SAM Boot Assistant (SAM-BA) driver
+[21-35-57]USB Serial support registered for siemens_mpi
+[21-35-57]usbcore: registered new interface driver siemens_mpi
+[21-35-57]Driver for Siemens USB/MPI adapter
+[21-35-57]Version 0.1 09/26/2005 Thomas Hergenhahn@web.de http://libnodave.sf.net
+[21-35-57]USB Serial support registered for Sierra USB modem
+[21-35-57]usbcore: registered new interface driver sierra
+[21-35-57]sierra: v.1.7.16:USB Driver for Sierra Wireless USB modems
+[21-35-57]USB Serial support registered for SPCP8x5
+[21-35-57]usbcore: registered new interface driver spcp8x5
+[21-35-57]spcp8x5: v0.10:SPCP8x5 USB to serial adaptor driver
+[21-35-57]USB Serial support registered for Quatech SSU-100 USB to Serial Driver
+[21-35-57]usbcore: registered new interface driver ssu100
+[21-35-57]ssu100: v0.1:Quatech SSU-100 USB to Serial Driver
+[21-35-57]USB Serial support registered for symbol
+[21-35-57]usbcore: registered new interface driver symbol
+[21-35-57]USB Serial support registered for TI USB 3410 1 port adapter
+[21-35-57]USB Serial support registered for TI USB 5052 2 port adapter
+[21-35-57]usbcore: registered new interface driver ti_usb_3410_5052
+[21-35-57]ti_usb_3410_5052: v0.10:TI USB 3410/5052 Serial Driver
+[21-35-57]USB Serial support registered for Handspring Visor / Palm OS
+[21-35-57]USB Serial support registered for Sony Clie 3.5
+[21-35-57]USB Serial support registered for Sony Clie 5.0
+[21-35-57]usbcore: registered new interface driver visor
+[21-35-57]visor: USB HandSpring Visor / Palm OS driver
+[21-35-57]USB Serial support registered for Connect Tech - WhiteHEAT - (prerenumeration)
+[21-35-57]USB Serial support registered for Connect Tech - WhiteHEAT
+[21-35-57]usbcore: registered new interface driver whiteheat
+[21-35-57]whiteheat: v2.0:USB ConnectTech WhiteHEAT driver
+[21-35-57]USB Serial support registered for vivopay-serial
+[21-35-57]usbcore: registered new interface driver vivopay-serial
+[21-35-57]vivopay_serial: v1.0:ViVOpay USB Serial Driver
+[21-35-57]USB Serial support registered for zio
+[21-35-57]usbcore: registered new interface driver zio
+[21-35-57]Initializing USB Mass Storage driver...
+[21-35-57]usbcore: registered new interface driver usb-storage
+[21-35-57]USB Mass Storage support registered.
+[21-35-57]s3c-hsotg s3c-hsotg: regs d0880000, irq 90
+[21-35-57]s3c-hsotg s3c-hsotg: s3c_hsotg_corereset: reset failed, GRSTCTL=80000001
+[21-35-57]s3c-hsotg s3c-hsotg: GRXFSIZ=0x00001800, GNPTXFSIZ=0x18001800
+[21-35-57]s3c-hsotg s3c-hsotg: shared fifos
+[21-35-57]s3c-hsotg s3c-hsotg: cannot create debug root
+[21-35-57]s3c-hsotg s3c-hsotg: DCFG=0x00200000, DCTL=0x00000002, DIEPMSK=0000000f
+[21-35-57]s3c-hsotg s3c-hsotg: GAHBCFG=0x00000000, 0x44=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: GRXFSIZ=0x00000800, GNPTXFSIZ=0x04000800
+[21-35-57]s3c-hsotg s3c-hsotg: DPTx[1] FSize=768, StAddr=0x00000f00
+[21-35-57]s3c-hsotg s3c-hsotg: DPTx[2] FSize=768, StAddr=0x00001200
+[21-35-57]s3c-hsotg s3c-hsotg: DPTx[3] FSize=768, StAddr=0x00001500
+[21-35-57]s3c-hsotg s3c-hsotg: DPTx[4] FSize=768, StAddr=0x00001800
+[21-35-57]s3c-hsotg s3c-hsotg: DPTx[5] FSize=768, StAddr=0x00001b00
+[21-35-57]s3c-hsotg s3c-hsotg: DPTx[6] FSize=768, StAddr=0x00001e00
+[21-35-57]s3c-hsotg s3c-hsotg: DPTx[7] FSize=768, StAddr=0x00002100
+[21-35-57]s3c-hsotg s3c-hsotg: DPTx[8] FSize=768, StAddr=0x00002400
+[21-35-57]s3c-hsotg s3c-hsotg: DPTx[9] FSize=768, StAddr=0x00002700
+[21-35-57]s3c-hsotg s3c-hsotg: DPTx[10] FSize=768, StAddr=0x00002a00
+[21-35-57]s3c-hsotg s3c-hsotg: DPTx[11] FSize=768, StAddr=0x00002d00
+[21-35-57]s3c-hsotg s3c-hsotg: DPTx[12] FSize=768, StAddr=0x00003000
+[21-35-57]s3c-hsotg s3c-hsotg: DPTx[13] FSize=768, StAddr=0x00003300
+[21-35-57]s3c-hsotg s3c-hsotg: DPTx[14] FSize=768, StAddr=0x00003600
+[21-35-57]s3c-hsotg s3c-hsotg: DPTx[15] FSize=768, StAddr=0x00003900
+[21-35-57]s3c-hsotg s3c-hsotg: ep0-in: EPCTL=0x00008000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep0-out: EPCTL=0x00008000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep1-in: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep1-out: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep2-in: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep2-out: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep3-in: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep3-out: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep4-in: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep4-out: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep5-in: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep5-out: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep6-in: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep6-out: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep7-in: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep7-out: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep8-in: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep8-out: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep9-in: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep9-out: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep10-in: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep10-out: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep11-in: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep11-out: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep12-in: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep12-out: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep13-in: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep13-out: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep14-in: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: ep14-out: EPCTL=0x00000000, SIZ=0x00000000, DMA=0x00000000
+[21-35-57]s3c-hsotg s3c-hsotg: DVBUSDIS=0x000017d7, DVBUSPULSE=000005b8
+[21-35-57]mousedev: PS/2 mouse device common for all mice
+[21-35-57]touchscreen-1wire       initialized
+[21-35-57]backlight-1wire initialized
+[21-35-57]input: TouchScreen Pipe as /devices/virtual/input/input0
+[21-35-57]ts-if   initialized
+[21-35-57]S3C24XX RTC, (c) 2004,2006 Simtec Electronics
+[21-35-57]s3c-rtc s3c64xx-rtc: rtc disabled, re-enabling
+[21-35-57]s3c-rtc s3c64xx-rtc: rtc core: registered s3c as rtc0
+[21-35-57]i2c /dev entries driver
+[21-35-57]Linux video capture interface: v2.00
+[21-35-57]i2c-core: driver [tuner] using legacy suspend method
+[21-35-57]i2c-core: driver [tuner] using legacy resume method
+[21-35-57]i2c-core: driver [msp3400] using legacy suspend method
+[21-35-57]i2c-core: driver [msp3400] using legacy resume method
+[21-35-57]usbcore: registered new interface driver usbvision
+[21-35-57]USBVision USB Video Device Driver for Linux : 0.9.10
+[21-35-57]usbcore: registered new interface driver pvrusb2
+[21-35-58]pvrusb2: V4L in-tree version:Hauppauge WinTV-PVR-USB2 MPEG2 Encoder/Tuner
+[21-35-58]pvrusb2: Debug mask is 31 (0x1f)
+[21-35-58]usbcore: registered new interface driver zr364xx
+[21-35-58]zr364xx: Zoran 364xx
+[21-35-58]usbcore: registered new interface driver stkwebcam
+[21-35-58]pwc: Philips webcam module version 10.0.14 loaded.
+[21-35-58]pwc: Supports Philips PCA645/646, PCVC675/680/690, PCVC720[40]/730/740/750 & PCVC830/840.
+[21-35-58]pwc: Also supports the Askey VC010, various Logitech Quickcams, Samsung MPC-C10 and MPC-C30,
+[21-35-58]pwc: the Creative WebCam 5 & Pro Ex, SOTEC Afina Eye and Visionite VCS-UC300 and VCS-UM100.
+[21-35-58]usbcore: registered new interface driver Philips webcam
+[21-35-58]gspca: v2.12.0 registered
+[21-35-58]usbcore: registered new interface driver benq
+[21-35-58]usbcore: registered new interface driver conex
+[21-35-58]usbcore: registered new interface driver cpia1
+[21-35-58]usbcore: registered new interface driver etoms
+[21-35-58]usbcore: registered new interface driver finepix
+[21-35-58]usbcore: registered new interface driver jeilinj
+[21-35-58]usbcore: registered new interface driver konica
+[21-35-58]usbcore: registered new interface driver mars
+[21-35-58]usbcore: registered new interface driver mr97310a
+[21-35-58]usbcore: registered new interface driver ov519
+[21-35-58]usbcore: registered new interface driver ov534
+[21-35-58]usbcore: registered new interface driver ov534_9
+[21-35-58]usbcore: registered new interface driver pac207
+[21-35-58]usbcore: registered new interface driver pac7302
+[21-35-58]usbcore: registered new interface driver pac7311
+[21-35-58]usbcore: registered new interface driver sn9c2028
+[21-35-58]usbcore: registered new interface driver sn9c20x
+[21-35-58]usbcore: registered new interface driver sonixb
+[21-35-58]usbcore: registered new interface driver sonixj
+[21-35-58]usbcore: registered new interface driver spca500
+[21-35-58]usbcore: registered new interface driver spca501
+[21-35-58]usbcore: registered new interface driver spca505
+[21-35-58]usbcore: registered new interface driver spca506
+[21-35-58]spca506: registered
+[21-35-58]usbcore: registered new interface driver spca508
+[21-35-58]usbcore: registered new interface driver spca561
+[21-35-58]usbcore: registered new interface driver spca1528
+[21-35-58]usbcore: registered new interface driver sq905
+[21-35-58]usbcore: registered new interface driver sq905c
+[21-35-58]usbcore: registered new interface driver sq930x
+[21-35-58]usbcore: registered new interface driver sunplus
+[21-35-58]usbcore: registered new interface driver stk014
+[21-35-58]usbcore: registered new interface driver stv0680
+[21-35-58]usbcore: registered new interface driver t613
+[21-35-58]usbcore: registered new interface driver tv8532
+[21-35-58]usbcore: registered new interface driver vc032x
+[21-35-58]usbcore: registered new interface driver xirlink-cit
+[21-35-58]usbcore: registered new interface driver zc3xx
+[21-35-58]usbcore: registered new interface driver ALi m5602
+[21-35-58]usbcore: registered new interface driver STV06xx
+[21-35-58]gspca_gl860: driver startup - version 0.9d10
+[21-35-58]usbcore: registered new interface driver gspca_gl860
+[21-35-58]usbcore: registered new interface driver hdpvr
+[21-35-58]usbcore: registered new interface driver s2255
+[21-35-58]s3c-fimc: controller 0 registered successfully
+[21-35-58]s3c-fimc: controller 1 registered successfully
+[21-35-58]FIMC Driver, 2010 ported by FriendlyARM http://www.arm9.net
+[21-35-58]ov965x: probe
+[21-35-58]s3c-fimc: i2c transfer error
+[21-35-58]s3c-fimc: i2c transfer error
+[21-35-58]s3c-fimc: i2c transfer error
+[21-35-58]s3c-fimc: i2c transfer error
+[21-35-58]s3c-fimc: ov965x: Product ID fb:fb Manufacturer ID fb:fb
+[21-35-58]parent clock for camera: 266.000 MHz, divisor: 11
+[21-35-58][CAM]RESET CAM.
+[21-35-58]S3C6400 MFC Driver, (c) 2007 Samsung Electronics, 2010 ported by FriendlyARM http://www.arm9.net
+[21-35-58] S3C6400 MFC Driver init OK. 
+[21-35-58]S3C PostProcessor Driver v3.12, (c) 2009 Samsung Electronics
+[21-35-58]S3C6410 TV encoder Driver, (c) 2008 Samsung Electronics
+[21-35-58] S3C6410 TV encoder Driver init OK. 
+[21-35-58]S3C6410 TV scaler Driver, (c) 2008 Samsung Electronics
+[21-35-58] S3C6410 TV scaler Driver init OK. 
+[21-35-58]S3C Rotator Driver, (c) 2008 Samsung Electronics
+[21-35-58]s3c_rotator_probe called
+[21-35-58]s3c_rotator_probe success
+[21-35-58]S3C JPEG Driver, (c) 2007 Samsung Electronics
+[21-35-58]s3c_g2d_probe called
+[21-35-58] s3c_g2d_probe Success
+[21-35-58] S3C G2D Init : Done
+[21-35-58]S3C G3D Driver, (c) 2007-2009 Samsung Electronics
+[21-35-58]s3c_g3d version : 0x1050000
+[21-35-58] S3C G3D Init : Done
+[21-35-58]usbcore: registered new interface driver uvcvideo
+[21-35-58]USB Video Class driver (v1.0.0)
+[21-35-58]S3C2410 Watchdog Timer, (c) 2004 Simtec Electronics
+[21-35-58]one_wire_status: 4
+[21-35-58]s3c2410-wdt s3c2410-wdt: watchdog inactive, reset disabled, irq enabled
+[21-35-58]sdhci: Secure Digital Host Controller Interface driver
+[21-35-58]sdhci: Copyright(c) Pierre Ossman
+[21-35-58]s3c-sdhci s3c-sdhci.0: clock source 0: hsmmc (133000000 Hz)
+[21-35-58]s3c-sdhci s3c-sdhci.0: clock source 1: hsmmc (133000000 Hz)
+[21-35-58]s3c-sdhci s3c-sdhci.0: clock source 2: mmc_bus (84666666 Hz)
+[21-35-58]mmc0: SDHCI controller on samsung-hsmmc [s3c-sdhci.0] using ADMA
+[21-35-58]s3c-sdhci s3c-sdhci.1: clock source 0: hsmmc (133000000 Hz)
+[21-35-58]one_wire_status: 4
+[21-35-58]s3c-sdhci s3c-sdhci.1: clock source 1: hsmmc (133000000 Hz)
+[21-35-58]s3c-sdhci s3c-sdhci.1: clock source 2: mmc_bus (84666666 Hz)
+[21-35-58]mmc1: SDHCI controller on samsung-hsmmc [s3c-sdhci.1] using ADMA
+[21-35-58]one_wire_status: 5
+[21-35-58]usbcore: registered new interface driver usbhid
+[21-35-58]usbhid: USB HID core driver
+[21-35-58]samsung-audio samsung-audio: platform register samsung-audio  //lpq platform
+[21-35-58]Registered platform 'samsung-audio'
+[21-35-58]samsung-i2s samsung-i2s.0: dai register samsung-i2s.0  //lpq cpu dai
+[21-35-58]Registered DAI 'samsung-i2s.0'
+[21-35-58]+mini210_audio_init()									//lpq machine driver
+[21-35-58]soc-audio soc-audio: binding MINI6410 at idx 0		//lpq soc_bind_dai_link  ----may call n times;
+[21-35-58]soc-audio soc-audio: CODEC wm8960-codec.0-001a not registered +++++++++++ fail
+[21-35-58]soc-audio soc-audio: Registered card 'mini6410'      	// lpq  snd_soc_register_card
+[21-35-58]one_wire_status: 4
+[21-35-58]-mini210_audio_init()
+[21-35-58]wm8960_i2c_probe codec entered
+[21-35-58]wm8960-codec 0-001a: codec register 0-001a
+[21-35-58]wm8960-codec 0-001a: dai register 0-001a #1
+[21-35-58]soc-audio soc-audio: binding MINI6410 at idx 0
+[21-35-58]soc-audio soc-audio: CODEC wm8960-codec.0-001a not registered +++++++++++ fail
+[21-35-58]one_wire_status: 4
+[21-35-58]soc-audio soc-audio: binding MINI6410 at idx 0
+[21-35-58]soc-audio soc-audio: probe mini6410 dai link 0    // +++++ run here the codec/cpu_dai/platform all find;
+[21-35-58]i2s_set_sysclk: dai=cc8e0ba0 clk_id=2 rfs=0		//cpu_dai probe call it;
+[21-35-58]RCLK_SRC=0Hz 
+[21-35-58]wm8960-codec 0-001a: wm8960_probe entered			// code probe 
+[21-35-58]wm8960-codec 0-001a: write f = 0
+[21-35-58]wm8960-codec 0-001a: read 0 => 97
+[21-35-58]wm8960-codec 0-001a: write 0 = 197
+[21-35-58]wm8960-codec 0-001a: read 1 => 97
+[21-35-58]wm8960-codec 0-001a: write 1 = 197
+[21-35-58]wm8960-codec 0-001a: read 15 => c3
+[21-35-58]one_wire_status: 4
+[21-35-58]wm8960-codec 0-001a: write 15 = 1c3
+[21-35-58]wm8960-codec 0-001a: read 16 => c3
+[21-35-58]wm8960-codec 0-001a: write 16 = 1c3
+[21-35-58]wm8960-codec 0-001a: read a => ff
+[21-35-58]wm8960-codec 0-001a: write a = 1ff
+[21-35-58]wm8960-codec 0-001a: read b => ff
+[21-35-58]one_wire_status: 4
+[21-35-58]wm8960-codec 0-001a: write b = 1ff
+[21-35-58]wm8960-codec 0-001a: read 2 => 0
+[21-35-58]wm8960-codec 0-001a: write 2 = 100
+[21-35-58]wm8960-codec 0-001a: read 3 => 0
+[21-35-58]wm8960-codec 0-001a: write 3 = 100
+[21-35-58]wm8960-codec 0-001a: read 28 => 0
+[21-35-58]wm8960-codec 0-001a: write 28 = 100
+[21-35-58]wm8960-codec 0-001a: read 29 => 0
+[21-35-58]mmc0: new high speed SDHC card at address e624
+[21-35-58]wm8960-codec 0-001a: write 29 = 100		//end of codec probe register init;
+[21-35-58]wm8960-codec 0-001a: read 20 => 100		//_add_route will read register to set path->connect
+[21-35-58]wm8960-codec 0-001a: read 20 => 100
+[21-35-58]one_wire_status: 4
+[21-35-58]mmcblk0: mmc0:e624 SU08G 7.40 GiB 
+[21-35-58]wm8960-codec 0-001a: read 20 => 100
+[21-35-58]wm8960-codec 0-001a: read 20 => 100
+[21-35-58]wm8960-codec 0-001a: read 21 => 100
+[21-35-59]wm8960-codec 0-001a: read 21 => 100
+[21-35-59]wm8960-codec 0-001a: read 21 => 100
+[21-35-59]wm8960-codec 0-001a: read 21 => 100
+[21-35-59]wm8960-codec 0-001a: read 22 => 50
+[21-35-59]wm8960-codec 0-001a: read 2d => 50
+[21-35-59] mmcblk0: p1
+[21-35-59]wm8960-codec 0-001a: read 22 => 50
+[21-35-59]wm8960-codec 0-001a: read 25 => 50
+[21-35-59]one_wire_status: 4
+[21-35-59]wm8960-codec 0-001a: read 2e => 50
+[21-35-59]wm8960-codec 0-001a: read 25 => 50
+[21-35-59]wm8960-codec 0-001a: wm8960_probe exited
+[21-35-59]+mini210_wm8960_init()					//lpq component_init() call it
+[21-35-59]*mini210_wm8960_init(): dapm sync start
+[21-35-59]*mini210_wm8960_init(): dapm sync end
+[21-35-59]one_wire_status: 4
+[21-35-59]-mini210_wm8960_init()
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]wm8960-codec 0-001a: read 1a => 0
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]one_wire_status: 4
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]wm8960-codec 0-001a: read 31 => 37
+[21-35-59]wm8960-codec 0-001a: read 31 => 37
+[21-35-59]wm8960-codec 0-001a: read 1a => 0
+[21-35-59]wm8960-codec 0-001a: read 1a => 0
+[21-35-59]wm8960-codec 0-001a: read 1a => 0
+[21-35-59]one_wire_status: 4
+[21-35-59]wm8960-codec 0-001a: read 1a => 0
+[21-35-59]wm8960-codec 0-001a: read 2f => 0
+[21-35-59]wm8960-codec 0-001a: read 2f => 0
+[21-35-59]wm8960-codec 0-001a: read 1a => 0
+[21-35-59]wm8960-codec 0-001a: read 1a => 0
+[21-35-59]wm8960-codec 0-001a: read 1a => 0
+[21-35-59]one_wire_status: 5
+[21-35-59]wm8960-codec 0-001a: read 1a => 0
+[21-35-59]wm8960-codec 0-001a: read 2f => 0
+[21-35-59]wm8960-codec 0-001a: read 2f => 0
+[21-35-59]wm8960-codec 0-001a: read 19 => 0
+[21-35-59]wm8960-codec 0-001a: read 19 => 0
+[21-35-59]wm8960-codec 0-001a: read 19 => 0
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]wm8960-codec 0-001a: read 0 => 197
+[21-35-59]one_wire_status: 4
+[21-35-59]soc-audio soc-audio: registered pcm #0 WM8960 HiFi wm8960-hifi-0   //lpq start of soc_new_pcm
+[21-35-59]Entered dma_new
+[21-35-59]Entered preallocate_dma_buffer
+[21-35-59]Entered preallocate_dma_buffer
+[21-35-59]asoc: wm8960-hifi <-> samsung-i2s.0 mapping ok					//lpq end of soc_new_pcm
+[21-35-59]Registered codec 'wm8960-codec.0-001a'
+[21-35-59]ALSA device list:
+[21-35-59]  #0: mini6410
+[21-35-59]TCP cubic registered
+[21-35-59]NET: Registered protocol family 17
+[21-35-59]VFP support v0.3: implementor 41 architecture 1 part 20 variant b rev 5
+[21-35-59]s3c-rtc s3c64xx-rtc: setting system clock to 2000-01-01 02:46:23 UTC (946694783)
+[21-35-59]Freeing init memory: 1408K
+[21-35-59]UBIFS: mounted UBI device 0, volume 0, name "FriendlyARM-root"
+[21-35-59]UBIFS: file system size:   253532160 bytes (247590 KiB, 241 MiB, 1965 LEBs)
+[21-35-59]UBIFS: journal size:       9033728 bytes (8822 KiB, 8 MiB, 71 LEBs)
+[21-35-59]UBIFS: media format:       w4/r0 (latest is w4/r0)
+[21-35-59]UBIFS: default compressor: lzo
+[21-35-59]UBIFS: reserved for root:  0 bytes (0 KiB)
+[21-35-59]1Wire touchscreen OK
+[21-36-00]FAT: utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+[21-36-02]fa_cpu_pfn: module license 'Proprietary' taints kernel.
+[21-36-02]Disabling lock debugging due to kernel taint
+[21-36-02]FriendlyARM proprietary driver for mini6410 initialized.
+[21-36-04][31/Dec/1999:18:46:27 +0000] boa: server version Boa/0.94.13
+[21-36-04][31/Dec/1999:18:46:27 +0000] boa: server built Dec 30 2010 at 11:18:35.
+[21-36-04][31/Dec/1999:18:46:27 +0000] boa: starting server pid=960, port 80
+[21-36-05]                        
+[21-36-06]No state is present for card mini6410
+[21-36-06]/usr/sbin/alsactl: parse:1655: Unable to open file '/usr/share/alsa/init/00main': No such file or directory
+[21-36-06]No state is present for card mini6410
+[21-36-06]                        
+[21-36-06]Try to bring eth0 interface up......eth0: link down
+[21-36-06]Done
+[21-36-06]
+[21-36-08]Please press Enter to activate this console. 
+[21-36-08][root@FriendlyARM /]# 
+[21-36-08][root@FriendlyARM /]# 
+[21-36-09][root@FriendlyARM /]# 
+[21-36-14][root@FriendlyARM /]# cd etc/rc.d/init.d/
+[21-36-14][root@FriendlyARM init.d]# 
+[21-36-15][root@FriendlyARM init.d]# ls
+[21-36-15]alsaconf  httpd     leds      netd      wifiapd
+[21-36-15][root@FriendlyARM init.d]# 
+[21-36-16][root@FriendlyARM init.d]# 
+[21-36-17][root@FriendlyARM init.d]# vi alsaconf 
+[21-36-17]#!/bin/sh
+[21-36-17]
+[21-36-17]alsa_config=/etc/wm9714.conf
+[21-36-17]base=/usr/sbin/alsactl
+[21-36-17]
+[21-36-17]# See how we were called.
+[21-36-17]case "$1" in
+[21-36-18]        ;;
+[21-36-18]        ;;
+[21-36-18]esac
+[21-36-18]
+[21-36-18]exit 0
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-18]~
+[21-36-23][root@FriendlyARM init.d]# 
+[21-36-23][root@FriendlyARM init.d]# 
+[21-36-23][root@FriendlyARM init.d]# 
+[21-36-26][root@FriendlyARM init.d]# ls /etc/
+[21-36-26]3g-modem                   mdev.conf
+[21-36-26]boa                        mime.types
+[21-36-26]eth0-setting               mtab
+[21-36-26]fanetwork.conf             passwd
+[21-36-26]friendlyarm-ts-input.conf  ppp
+[21-36-26]ftpchroot                  profile
+[21-36-26]ftpusers                   protocols
+[21-36-26]group                      rc.d
+[21-36-26]host.conf                  resolv.conf
+[21-36-26]hostapd.conf               scsi_id.config
+[21-36-26]hosts                      services
+[21-36-26]inetd.conf                 ts.conf
+[21-36-26]init.d                     ts.detected
+[21-36-26]issue.net                  udhcpd.conf
+[21-36-26]localtime                  wm9714.conf
+[21-36-26]login.defs
+[21-36-27][root@FriendlyARM init.d]# 
+[21-36-27][root@FriendlyARM init.d]# 
+[21-36-56][root@FriendlyARM init.d]# 
+[21-36-57][root@FriendlyARM init.d]# 
+[21-37-06][root@FriendlyARM init.d]# amixer contents
+[21-37-06]numid=6,iface=MIXER,name='Headphone Playback ZC Switch'wm8960-codec 0-001a: read 2 => 100
+[21-37-06]wm8960-codec 0-001a: read 3 => 100
+[21-37-06]
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=2
+[21-37-06]wm8960-codec 0-001a: read 2 => 100
+[21-37-06]wm8960-codec 0-001a: read 3 => 100
+[21-37-06]wm8960-codec 0-001a: read 5 => 8
+[21-37-06]wm8960-codec 0-001a: read 5 => 8
+[21-37-06]wm8960-codec 0-001a: read 20 => 100
+[21-37-06]  : values=off,off
+[21-37-06]numid=5,iface=MIXER,name='Headphone Playbackwm8960-codec 0-001a: read 21 => 100
+[21-37-06]wm8960-codec 0-001a: read 5 => 8
+[21-37-06]wm8960-codec 0-001a: read 0 => 197
+[21-37-06]wm8960-codec 0-001a: read 1 => 197
+[21-37-06]wm8960-codec 0-001a: read 0 => 197
+[21-37-06] Volume'
+[21-37-06]  ; type=INTEGER,access=rw---R--,values=2,min=0,max=12wm8960-codec 0-001a: read 1 => 197
+[21-37-06]wm8960-codec 0-001a: read 0 => 197
+[21-37-06]wm8960-codec 0-001a: read 1 => 197
+[21-37-06]wm8960-codec 0-001a: read a => 1ff
+[21-37-06]7,step=0
+[21-37-06]  : values=0,0
+[21-37-06]  | dBscale-min=-121.00dB,step=1.00dB,wm8960-codec 0-001a: read b => 1ff
+[21-37-06]wm8960-codec 0-001a: read 10 => 0
+[21-37-06]wm8960-codec 0-001a: read 10 => 0
+[21-37-06]wm8960-codec 0-001a: read 10 => 0
+[21-37-06]wm8960-codec 0-001a: read 10 => 0
+[21-37-06]mute=1
+[21-37-06]numid=11,iface=MIXER,name='PCM Playback -6dB Switch'
+[21-37-06]  wm8960-codec 0-001a: read 13 => 32
+[21-37-06]wm8960-codec 0-001a: read 13 => 32
+[21-37-06]wm8960-codec 0-001a: read 11 => 7b
+[21-37-06]wm8960-codec 0-001a: read 12 => 100
+[21-37-06]wm8960-codec 0-001a: read 11 => 7b
+[21-37-06]; type=BOOLEAN,access=rw------,values=1
+[21-37-06]  : values=off
+[21-37-06]numid=1wm8960-codec 0-001a: read 12 => 100
+[21-37-06]wm8960-codec 0-001a: read 13 => 32
+[21-37-06]wm8960-codec 0-001a: read 11 => 7b
+[21-37-06]wm8960-codec 0-001a: read 10 => 0
+[21-37-06]3,iface=MIXER,name='ADC High Pass Filter Switch'
+[21-37-06]  ; type=BOOLEwm8960-codec 0-001a: read 20 => 100
+[21-37-06]wm8960-codec 0-001a: read 20 => 100
+[21-37-06]wm8960-codec 0-001a: read 20 => 100
+[21-37-06]wm8960-codec 0-001a: read 20 => 100
+[21-37-06]wm8960-codec 0-001a: read 2d => 50
+[21-37-06]AN,access=rw------,values=1
+[21-37-06]  : values=off
+[21-37-06]numid=30,iface=MIXEwm8960-codec 0-001a: read 2d => 50
+[21-37-06]wm8960-codec 0-001a: read 22 => 50
+[21-37-06]wm8960-codec 0-001a: read 22 => 50
+[21-37-06]wm8960-codec 0-001a: read 22 => 50
+[21-37-06]R,name='ADC PCM Capture Volume'
+[21-37-06]  ; type=INTEGER,access=rw-----wm8960-codec 0-001a: read 14 => 0
+[21-37-06]-,values=2,min=0,max=127,step=0
+[21-37-06]  : values=0,0
+[21-37-06]numid=12,iface=MIXER,name='ADC Polarity'
+[21-37-06]  ; type=ENUMERATED,access=rw------,values=1,items=4
+[21-37-06]  ; Item #0 'No Inversion'
+[21-37-06]  ; Item #1 'Left Inverted'
+[21-37-06]  ; Item #2 'Right Inverted'
+[21-37-06]  ; Item #3 'Stereo Inversion'
+[21-37-06]  : values=0
+[21-37-06]numid=2,iface=MIXER,name='Capture Volume ZC Switch'
+[21-37-06]  ; type=INTEGER,access=rw------,values=2,min=0,max=1,step=0
+[21-37-06]  : values=0,0
+[21-37-06]numid=3,iface=MIXER,name='Capture Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=2
+[21-37-06]  : values=on,on
+[21-37-06]numid=1,iface=MIXER,name='Capture Volume'
+[21-37-06]  ; type=INTEGER,access=rw---R--,values=2,min=0,max=63,step=0
+[21-37-06]  : values=23,23
+[21-37-06]  | dBscale-min=-97.00dB,step=0.50dB,mute=0
+[21-37-06]numid=4,iface=MIXER,name='Playback Volume'
+[21-37-06]  ; type=INTEGER,access=rw---R--,values=2,min=0,max=255,step=0
+[21-37-06]  : values=255,255
+[21-37-06]  | dBscale-min=-127.00dB,step=0.50dB,mute=1
+[21-37-06]numid=17,iface=MIXER,name='3D Filter Lower Cut-Off'
+[21-37-06]  ; type=ENUMERATED,access=rw------,values=1,items=2
+[21-37-06]  ; Item #0 'Low'
+[21-37-06]  ; Item #1 'High'
+[21-37-06]  : values=0
+[21-37-06]numid=16,iface=MIXER,name='3D Filter Upper Cut-Off'
+[21-37-06]  ; type=ENUMERATED,access=rw------,values=1,items=2
+[21-37-06]  ; Item #0 'High'
+[21-37-06]  ; Item #1 'Low'
+[21-37-06]  : values=0
+[21-37-06]numid=19,iface=MIXER,name='3D Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-06]  : values=off
+[21-37-06]numid=18,iface=MIXER,name='3D Volume'
+[21-37-06]  ; type=INTEGER,access=rw------,values=1,min=0,max=15,step=0
+[21-37-06]  : values=0
+[21-37-06]numid=27,iface=MIXER,name='ALC Attack'
+[21-37-06]  ; type=INTEGER,access=rw------,values=1,min=0,max=15,step=0
+[21-37-06]  : values=2
+[21-37-06]numid=26,iface=MIXER,name='ALC Decay'
+[21-37-06]  ; type=INTEGER,access=rw------,values=1,min=0,max=15,step=0
+[21-37-06]  : values=3
+[21-37-06]numid=20,iface=MIXER,name='ALC Function'
+[21-37-06]  ; type=ENUMERATED,access=rw------,values=1,items=4
+[21-37-06]  ; Item #0 'Off'
+[21-37-06]  ; Item #1 'Right'
+[21-37-06]  ; Item #2 'Left'
+[21-37-06]  ; Item #3 'Stereo'
+[21-37-06]  : values=0
+[21-37-06]numid=24,iface=MIXER,name='ALC Hold Time'
+[21-37-06]  ; type=INTEGER,access=rw------,values=1,min=0,max=15,step=0
+[21-37-06]  : values=0
+[21-37-06]numid=21,iface=MIXER,name='ALC Max Gain'
+[21-37-06]  ; type=INTEGER,access=rw------,values=1,min=0,max=7,step=0
+[21-37-06]  : values=7
+[21-37-06]numid=23,iface=MIXER,name='ALC Min Gain'
+[21-37-06]  ; type=INTEGER,access=rw------,values=1,min=0,max=7,step=0
+[21-37-06]  : values=0
+[21-37-06]numid=25,iface=MIXER,name='ALC Mode'
+[21-37-06]  ; type=ENUMERATED,access=rw------,values=1,items=2
+[21-37-06]  ; Item #0 'ALC'
+[21-37-06]  ; Item #1 'Limiter'
+[21-37-06]  : values=0
+[21-37-06]numid=22,iface=MIXER,name='ALC Target'
+[21-37-06]  ; type=INTEGER,access=rw------,values=1,min=0,max=15,step=0
+[21-37-06]  : values=4
+[21-37-06]numid=15,iface=MIXER,name='DAC Deemphasis Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-06]  : values=off
+[21-37-06]numid=14,iface=MIXER,name='DAC Polarity'
+[21-37-06]  ; type=ENUMERATED,access=rw------,values=1,items=2
+[21-37-06]  ; Item #0 'High'
+[21-37-06]  ; Item #1 'Low'
+[21-37-06]  : values=0
+[21-37-06]numid=48,iface=MIXER,name='Left Boost Mixer LINPUT1 Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-06]  : values=on
+[21-37-06]numid=46,iface=MIXER,name='Left Boost Mixer LINPUT2 Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-06]  : values=off
+[21-37-06]numid=47,iface=MIXER,name='Left Boost Mixer LINPUT3 Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-06]  : values=off
+[21-37-06]numid=42,iface=MIXER,name='Left Input Mixer Boost Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-06]  : values=off
+[21-37-06]numid=40,iface=MIXER,name='Left Output Mixer Boost Bypass Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-06]  : values=off
+[21-37-06]numid=31,iface=MIXER,name='Left Output Mixer Boost Bypass Volume'
+[21-37-06]  ; type=INTEGER,access=rw---R--,values=1,min=0,max=7,step=0
+[21-37-06]  : values=2
+[21-37-06]  | dBscale-min=-21.00dB,step=3.00dB,mute=0
+[21-37-06]numid=39,iface=MIXER,name='Left Output Mixer LINPUT3 Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-06]  : values=off
+[21-37-06]numid=32,iface=MIXER,name='Left Output Mixer LINPUT3 Volume'
+[21-37-06]  ; type=INTEGER,access=rw---R--,values=1,min=0,max=7,step=0
+[21-37-06]  : values=2
+[21-37-06]  | dBscale-min=-21.00dB,step=3.00dB,mute=0
+[21-37-06]numid=38,iface=MIXER,name='Left Output Mixer PCM Pwm8960-codec 0-001a: read 14 => 0
+[21-37-06]wm8960-codec 0-001a: read 21 => 100
+[21-37-06]wm8960-codec 0-001a: read 21 => 100
+[21-37-06]layback Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-06]  : wm8960-codec 0-001a: read 21 => 100
+[21-37-06]wm8960-codec 0-001a: read 21 => 100
+[21-37-06]wm8960-codec 0-001a: read 2e => 50
+[21-37-06]wm8960-codec 0-001a: read 2e => 50
+[21-37-06]values=off
+[21-37-06]numid=29,iface=MIXER,name='Noise Gate Switch'
+[21-37-06]  ; twm8960-codec 0-001a: read 25 => 50
+[21-37-06]wm8960-codec 0-001a: read 25 => 50
+[21-37-06]wm8960-codec 0-001a: read 25 => 50
+[21-37-06]wm8960-codec 0-001a: read 33 => 80
+[21-37-06]wm8960-codec 0-001a: read 33 => 80
+[21-37-06]ype=BOOLEAN,access=rw------,values=1
+[21-37-06]  : values=off
+[21-37-06]numid=28,iwm8960-codec 0-001a: read 28 => 100
+[21-37-06]wm8960-codec 0-001a: read 29 => 100
+[21-37-06]wm8960-codec 0-001a: read 28 => 100
+[21-37-06]wm8960-codec 0-001a: read 29 => 100
+[21-37-06]face=MIXER,name='Noise Gate Threshold'
+[21-37-06]  ; type=INTEGER,access=rw------,values=1,min=0,max=31,step=0
+[21-37-06]  : values=0
+[21-37-06]numid=45,iface=MIXER,name='Right Boost Mixer RINPUT1 Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-06]  : values=on
+[21-37-06]numid=43,iface=MIXER,name='Right Boost Mixer RINPUT2 Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-06]  : values=off
+[21-37-06]numid=44,iface=MIXER,name='Right Boost Mixer RINPUT3 Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-06]  : values=off
+[21-37-06]numid=41,iface=MIXER,name='Right Input Mixer Boost Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-06]  : values=off
+[21-37-06]numid=37,iface=MIXER,name='Right Output Mixer Boost Bypass Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-06]  : values=off
+[21-37-06]numid=33,iface=MIXER,name='Right Output Mixer Boost Bypass Volume'
+[21-37-06]  ; type=INTEGER,access=rw---R--,values=1,min=0,max=7,step=0
+[21-37-06]  : values=2
+[21-37-06]  | dBscale-min=-21.00dB,step=3.00dB,mute=0
+[21-37-06]numid=35,iface=MIXER,name='Right Output Mixer PCM Playback Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-06]  : values=off
+[21-37-06]numid=36,iface=MIXER,name='Right Output Mixer RINPUT3 Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-06]  : values=off
+[21-37-06]numid=34,iface=MIXER,name='Right Output Mixer RINPUT3 Volume'
+[21-37-06]  ; type=INTEGER,access=rw---R--,values=1,min=0,max=7,step=0
+[21-37-06]  : values=2
+[21-37-06]  | dBscale-min=-21.00dB,step=3.00dB,mute=0
+[21-37-06]numid=10,iface=MIXER,name='Speaker AC Volume'
+[21-37-06]  ; type=INTEGER,access=rw------,values=1,min=0,max=5,step=0
+[21-37-06]  : values=0
+[21-37-06]numid=9,iface=MIXER,name='Speaker DC Volume'
+[21-37-06]  ; type=INTEGER,access=rw------,values=1,min=0,max=5,step=0
+[21-37-06]  : values=0
+[21-37-06]numid=7,iface=MIXER,name='Speaker Playback Volume'
+[21-37-06]  ; type=INTEGER,access=rw---R--,values=2,min=0,max=127,step=0
+[21-37-06]  : values=0,0
+[21-37-06]  | dBscale-min=-121.00dB,step=1.00dB,mute=1
+[21-37-06]numid=8,iface=MIXER,name='Speaker Playback ZC Switch'
+[21-37-06]  ; type=BOOLEAN,access=rw------,values=2
+[21-37-06]  : values=off,off
+[21-37-35][root@FriendlyARM init.d]# 
+[21-37-35][root@FriendlyARM init.d]# 
+[21-37-35][root@FriendlyARM init.d]# 
+[21-37-37][root@FriendlyARM init.d]# amixer cset numid=5 80
+[21-37-37]amixer cset numid=38 on
+[21-37-37]amixer cset numid=35 onwm8960-codec 0-001a: read 2 => 100
+[21-37-37]wm8960-codec 0-001a: write 2 = 150
+[21-37-37]wm8960-codec 0-001a: read 3 => 100
+[21-37-37]wm8960-codec 0-001a: write 3 = 150
+[21-37-37]numid=5,iface=MIXER,name='Headphone Playback Volume'wm8960-codec 0-001a: read 2 => 150
+[21-37-37]wm8960-codec 0-001a: read 3 => 150
+[21-37-37]
+[21-37-37]  ; type=INTEGER,access=rw---R--,values=2,min=0,max=127,step=0
+[21-37-37]  : values=80,80
+[21-37-37]  | dBscale-min=-121.00dB,step=1.00dB,mute=1
+[21-37-37][root@FriendlyARM init.d]# amixer cset numid=38 on
+[21-37-37]wm8960-codec 0-001a: read 22 => 50
+[21-37-37]wm8960-codec 0-001a: read 22 => 50
+[21-37-37]wm8960-codec 0-001a: write 22 = 150
+[21-37-37]numid=38,iface=MIXER,name='Left Output Mixer PCM Playback Switch'wm8960-codec 0-001a: read 22 => 150
+[21-37-37]
+[21-37-37]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-37]  : values=on
+[21-37-38][root@FriendlyARM init.d]# amixer cset numid=35 on
+[21-37-39]wm8960-codec 0-001a: read 25 => 50
+[21-37-39]wm8960-codec 0-001a: read 25 => 50
+[21-37-39]wm8960-codec 0-001a: write 25 = 150
+[21-37-39]wm8960-codec 0-001a: read 25 => 150
+[21-37-39]numid=35,iface=MIXER,name='Right Output Mixer PCM Playback Switch'
+[21-37-39]  ; type=BOOLEAN,access=rw------,values=1
+[21-37-39]  : values=on
+[21-37-39][root@FriendlyARM init.d]# 
+[21-37-39][root@FriendlyARM init.d]# 
+[21-37-40][root@FriendlyARM init.d]# 
+[21-37-54][root@FriendlyARM init.d]# aplay -r8000 -f S16_LE /sdcard/abc.wa
+[21-37-54]Entered dma_open
+[21-37-54]/sdcard/abc.wa: No such file or directoryEntered dma_hw_free
+[21-37-54]wm8960-codec 0-001a: read 5 => 8
+[21-37-54]
+[21-37-54]wm8960-codec 0-001a: write 5 = 8
+[21-37-54]i2s_set_sysclk: dai=cc8e0ba0 clk_id=2 rfs=0
+[21-37-54]RCLK_SRC=0Hz 
+[21-37-54]Entered dma_close

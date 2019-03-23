@@ -1,0 +1,2508 @@
+﻿
+
+
+
+
+[21-37-59][root@FriendlyARM init.d]# aplay -r8000 -f S16_LE /sdcard/abc.wav
+[21-37-59]Entered dma_open				//lpq        // soc_pcm_open  cpu_dai startup -> platform open -> codec_dai startup -> machine startup
+[21-37-59]Playing WAVE '/sdcard/abc.wav' : Signed 16 bit Little Endian, Rate 8000 Hz, Stereo
+[21-37-59]+mini210_hw_params()			//lpq        // soc_pcm_hw_params -> machine hw_params
+[21-37-59]wm8960_set_dai_fmt: code_dai=cc8e0360  fmt=12288
+[21-37-59]wm8960-codec 0-001a: write 7 = 2
+[21-37-59]i2s_set_fmt: dai=cc8e0ba0 rfs=12288
+[21-37-59]i2s_set_sysclk: dai=cc8e0ba0 clk_id=3 rfs=8000
+[21-37-59]RCLK_SRC=0Hz 
+[21-37-59]i2s_set_sysclk: dai=cc8e0ba0 clk_id=1 rfs=8000
+[21-37-59]RCLK_SRC=84666666Hz 
+[21-37-59]wm8960_set_dai_clkdiv: codec_dai=cc8e0360 div_id=0 div=0
+[21-37-59]wm8960-codec 0-001a: read 4 => 0
+[21-37-59]wm8960-codec 0-001a: write 4 = 0
+[21-37-59]wm8960_set_dai_clkdiv: codec_dai=cc8e0360 div_id=1 div=0
+[21-37-59]wm8960-codec 0-001a: read 4 => 0
+[21-37-59]wm8960-codec 0-001a: write 4 = 0
+[21-37-59]wm8960_set_dai_clkdiv: codec_dai=cc8e0360 div_id=3 div=4096000
+[21-37-59]wm8960-codec 0-001a: read 8 => 1c0
+[21-37-59]wm8960-codec 0-001a: write 8 = 3e8000
+[21-37-59]i2s_set_clkdiv: dai=cc8e0ba0 div_id=3 div=11
+[21-37-59]i2s_set_clkdiv: PSR=00008b00
+[21-37-59]i2s_set_clkdiv: dai=cc8e0ba0 div_id=2 div=512
+[21-37-59]i2s_set_clkdiv:RCLK MOD=00000408
+[21-37-59]i2s_set_clkdiv: dai=cc8e0ba0 div_id=1 div=32
+[21-37-59]i2s_set_clkdiv:BCLK MOD=00000408
+[21-37-59]-mini210_hw_params()
+[21-37-59]wm8960-codec 0-001a: read 7 => 2			// codec_dai hw_params -> cpu_dai hwparams
+[21-37-59]wm8960-codec 0-001a: read 5 => 8
+[21-37-59]wm8960-codec 0-001a: write 7 = 2
+[21-37-59]Entered dma_hw_params						// platform hw_params
+[21-37-59]params cd71d5b0, client cd71d5b0, channel 10
+[21-37-59]Entered dma_prepare						// soc_pcm_prepare start; platform prepare(key) -> cpu_dai(null) -> codec_dai(null) -> _dapm_stream_event
+[21-37-59]Entered dma_enqueue
+[21-37-59]dma_enqueue: loaded 0, limit 4
+[21-37-59]dma_loaded: 0
+[21-37-59]dma_loaded: 1
+[21-37-59]dma_loaded: 2
+[21-37-59]dma_loaded: 3
+wm8960-codec 0-001a: dapm: widget Right DAC
+ Playback stream Playback event 1
+wm8960-codec 0-001a: dapm: widget Left DAC
+ Playback stream Playback event 1
+wm8960-codec 0-001a: dapm: widget Right ADC
+ Capture stream Playback event 1
+wm8960-codec 0-001a: dapm: widget Left ADC
+ Capture stream Playback event 1
+wm8960-codec 0-001a: dapm: Setting bias prepare
+[21-37-59]wm8960-codec 0-001a: read 1c => 0			// soc_pcm_prepare-> _dapm_stream_event -> _power_widget ->  set_bias_level(standby -> prepare)
+[21-37-59]wm8960-codec 0-001a: write 1c = 94
+[21-37-59]wm8960-codec 0-001a: read 1a => 0
+[21-37-59]wm8960-codec 0-001a: write 1a = 62
+[21-37-59]wm8960-codec 0-001a: read 19 => 0
+[21-37-59]wm8960-codec 0-001a: write 19 = 80
+[21-37-59]wm8960-codec 0-001a: read 19 => 80
+[21-37-59]wm8960-codec 0-001a: write 19 = c0		// end of set_bias_level(standby -> prepare)
+[21-37-59]wm8960-codec 0-001a: read 1a => 62		// _power_widget -> dapm_seq_run (uplist)
+[21-37-59]wm8960-codec 0-001a: write 1a = 1e2
+[21-37-59]wm8960-codec 0-001a: read 2f => 0
+[21-37-59]wm8960-codec 0-001a: write 2f = c
+[21-37-59]wm8960-codec 0-001a: read 1a => 1e2
+[21-37-59]wm8960-codec 0-001a: write 1a = 1fa
+[21-37-59]wm8960-codec 0-001a: read 31 => 37
+[21-37-59]wm8960-codec 0-001a: write 31 = f7		// end of dapm_seq_run (uplist)
+wm8960-codec 0-001a: dapm: Setting full bias
+[21-37-59]wm8960-codec 0-001a: read 5 => 8			// soc_pcm_prepare -> digital_mute  soc_pcm_prepare end ; lpq
+[21-37-59]wm8960-codec 0-001a: write 5 = 0
+[21-37-59]Entered dma_trigger						//soc_pcm_trigger  codec_dai trigger -> platform trigger -> cpu_dai trigger
+[21-37-59]samsung-i2s samsung-i2s.0: RCLK_SRC=84666666Hz PSR=41, RCLK=256fs, BCLK=32fs  //cpu_dai trigger log
+[21-37-59]Entered dma_pointer						//soc_pcm_pointer  platform pointer -> cpu_dai delay -> codec_dai delay -> platform delay
+[21-37-59]Pointer 5cdc015c 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc0168 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc01f0 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc0274 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc03dc 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc03e8 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc0470 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc04f4 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc0664 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc0670 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc06f4 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc077c 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc08e8 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc08f4 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc0978 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc0a00 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc0b6c 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc0b78 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc0c00 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc0c84 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc0df4 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc0e00 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc0e84 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc0f0c 7f002010
+[21-37-59]Entered audio_buffdone
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1010 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1078 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc10e4 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc116c 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc11f0 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc12fc 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1308 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1390 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1414 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1584 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1590 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1614 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc169c 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1808 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1814 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1898 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1920 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1a8c 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1a98 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1b20 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1ba4 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1d14 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1d1c 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1da4 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1e2c 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1f98 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc1fa4 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc2028 7f002010
+[21-37-59]Entered audio_buffdone
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc20f4 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc2220 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc222c 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc22b4 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc2338 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc24a4 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc24b0 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc2534 7f002010
+[21-37-59]Entered dma_pointer
+[21-37-59]Pointer 5cdc25bc 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2728 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2734 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc27b8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2840 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc29ac 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc29b8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2a40 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2ac4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2c34 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2c3c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2cc4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2d4c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2eb8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2ec4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2f48 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2fd0 7f002010
+[21-38-00]Entered audio_buffdone
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3098 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3140 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc31a8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc322c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc32b4 7f002010
+[21-38-00]one_wire_status: 4
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc33c4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc33f8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3480 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3504 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3648 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3654 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc36d8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3760 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc38cc 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc38d8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3960 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc39e4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3b54 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3b5c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3be4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3c6c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3dd8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3de4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3e68 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3ef0 7f002010
+[21-38-00]Entered audio_buffdone
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0010 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc005c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc00e4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc016c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc02e4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc02f0 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0374 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc03fc 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0568 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0574 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc05f8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0680 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc07ec 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc07f8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0880 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0904 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0a74 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0a80 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0b04 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0b8c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0cf8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0d04 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0d88 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0e10 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0f7c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0f88 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1010 7f002010
+[21-38-00]Entered audio_buffdone
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc10d8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1208 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1210 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1298 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1320 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1488 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1494 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1518 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc15a0 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1714 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1720 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc17a4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc182c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1994 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc199c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1a24 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1aac 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1c18 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1c24 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1ca8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1d30 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1e9c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1ea8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1f30 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1fb4 7f002010
+[21-38-00]Entered audio_buffdone
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2080 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2124 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc218c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2210 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2298 7f002010
+[21-38-00]one_wire_status: 4
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc23a8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc23dc 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2464 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc24e8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc262c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2638 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc26c0 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2744 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc28b4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc28bc 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2944 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc29cc 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2b38 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2b44 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2bc8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2c50 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2dbc 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2dc8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2e50 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2ed4 7f002010
+[21-38-00]Entered audio_buffdone
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3010 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc305c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc30e4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc316c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc32c8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc32d4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc335c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc33e0 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc354c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3558 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc35e0 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3664 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc37d4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc37dc 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3864 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc38ec 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3a58 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3a64 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3ae8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3b70 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3cdc 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3ce8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3d70 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3df4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3f64 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3f6c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc3ff4 7f002010
+[21-38-00]Entered audio_buffdone
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc00bc 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc01e8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc01f4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0278 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0300 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc046c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0478 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0500 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0584 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc06f4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc06fc 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0784 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc080c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0978 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0984 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0a08 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0a90 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0bfc 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0c08 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0c90 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0d14 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0e84 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0e8c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0f14 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc0f9c 7f002010
+[21-38-00]Entered audio_buffdone
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1064 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1108 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1170 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc11f8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc127c 7f002010
+[21-38-00]one_wire_status: 4
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc138c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc13c4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1448 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc14d0 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1614 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc161c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc16a4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc172c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1898 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc18a4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1928 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc19b0 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1b1c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1b28 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1bb0 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1c34 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1da4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1dac 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1e34 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc1ebc 7f002010
+[21-38-00]Entered audio_buffdone
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2010 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc205c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc20e4 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc216c 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc22ac 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc22b8 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc2340 7f002010
+[21-38-00]Entered dma_pointer
+[21-38-00]Pointer 5cdc23c4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2534 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc253c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc25c4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc264c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc27b8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc27c4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2848 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc28d0 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2a3c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2a48 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2ad0 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2b54 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2cc4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2ccc 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2d54 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2ddc 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2f48 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2f54 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2fd8 7f002010
+[21-38-01]Entered audio_buffdone
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc30a4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc31cc 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc31d8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3260 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc32e4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3454 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc345c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc34e4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc356c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc36d8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc36e4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3768 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc37f0 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc395c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3968 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc39f0 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3a74 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3be4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3bec 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3c74 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3cfc 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3e68 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3e74 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3ef8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3f80 7f002010
+[21-38-01]Entered audio_buffdone
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0048 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc00ec 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0154 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc01dc 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0264 7f002010
+[21-38-01]one_wire_status: 5
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0374 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc03a8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc042c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc04b4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc05f8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0604 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0688 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0710 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc087c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0888 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0910 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0994 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0b04 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0b0c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0b94 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0c18 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0d88 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0d94 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0e18 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0ea0 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0ffc 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1018 7f002010
+[21-38-01]Entered audio_buffdone
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc10e0 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1168 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1294 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc129c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1324 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc13ac 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1518 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1524 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc15a8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1630 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc179c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc17a8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1830 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc18b4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1a24 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1a2c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1ab4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1b3c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1ca8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1cb4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1d38 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1dc0 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1f2c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1f38 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1fc0 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2044 7f002010
+[21-38-01]Entered audio_buffdone
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2110 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc21b8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc221c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc22a0 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2328 7f002010
+[21-38-01]one_wire_status: 4
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2438 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc246c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc24f4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2578 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc26bc 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc26c8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2750 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc27d4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2944 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc294c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc29d4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2a5c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2bc8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2bd4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2c58 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2ce0 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2e4c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2e58 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2ee0 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2f64 7f002010
+[21-38-01]Entered audio_buffdone
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3030 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc30d4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc313c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc31c0 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3248 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3358 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3364 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc33e8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3470 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc35dc 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc35e8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3670 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc36f4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3864 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc386c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc38f4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3978 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3ae8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3af4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3b78 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3c00 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3d6c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3d78 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3e00 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3e84 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3ff0 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc3ffc 7f002010
+[21-38-01]Entered audio_buffdone
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc00c8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc014c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc027c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0288 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc030c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0394 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc04fc 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0508 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0590 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0614 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0784 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc078c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0814 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0898 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0a08 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0a14 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0a98 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0b20 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0c8c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0c98 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0d20 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0da4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0f14 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0f1c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc0fa4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1028 7f002010
+[21-38-01]Entered audio_buffdone
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc10f4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc119c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1200 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1288 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc130c 7f002010
+[21-38-01]one_wire_status: 4
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc141c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1450 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc14d8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1560 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc16a0 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc16ac 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1734 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc17b8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1928 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1934 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc19b8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1a40 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1bac 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1bb8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1c40 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1cc4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1e30 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1e3c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1ec4 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc1f48 7f002010
+[21-38-01]Entered audio_buffdone
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2014 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc20b8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc2120 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc21a8 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc222c 7f002010
+[21-38-01]Entered dma_pointer
+[21-38-01]Pointer 5cdc233c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2348 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc23d0 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2454 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc25c4 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc25cc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2654 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc26d8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2848 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2854 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc28d8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2960 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2acc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2ad8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2b60 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2be4 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2d50 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2d5c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2de4 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2e68 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2fd8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2fe4 7f002010
+[21-38-02]Entered audio_buffdone
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc30ac 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3134 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3260 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc326c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc32f4 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3378 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc34e4 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc34ec 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3574 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc35fc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3768 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3774 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc37f8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3880 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc39ec 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc39f8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3a7c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3b04 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3c70 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3c7c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3d04 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3d88 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3ef8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3f04 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3f88 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0010 7f002010
+[21-38-02]Entered audio_buffdone
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc00d8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0180 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc01e4 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc026c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc02f0 7f002010
+[21-38-02]one_wire_status: 4
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0404 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0438 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc04bc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0544 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0688 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0694 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0718 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc07a0 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc090c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0918 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc099c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0a24 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0b90 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0b9c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0c24 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0ca8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0e18 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0e24 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0ea8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0f30 7f002010
+[21-38-02]Entered audio_buffdone
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1010 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc109c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1104 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc118c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1210 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1320 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc132c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc13b4 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1438 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc15b0 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc15bc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1640 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc16c8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc182c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1838 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc18bc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1944 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1ab0 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1abc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1b44 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1bc8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1d38 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1d40 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1dc8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1e50 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1fbc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1fc8 7f002010
+[21-38-02]Entered audio_buffdone
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2090 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2118 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2248 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2250 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc22d8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc235c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc24c8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc24d4 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2558 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc25e0 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc274c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2758 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc27dc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2864 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc29d0 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc29dc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2a64 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2ae8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2c58 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2c60 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2ce8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2d70 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2edc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2ee8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2f6c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc2ff4 7f002010
+[21-38-02]Entered audio_buffdone
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc30bc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3160 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc31cc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3250 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc32d8 7f002010
+[21-38-02]one_wire_status: 4
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc33e8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc341c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc34a4 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3528 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc366c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3678 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3700 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3784 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc38f4 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc38fc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3984 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3a08 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3b78 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3b80 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3c08 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3c90 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3dfc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3e08 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3e8c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc3f14 7f002010
+[21-38-02]Entered audio_buffdone
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0010 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0080 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc00ec 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0170 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc01f8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0308 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0310 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0398 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0420 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc058c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0598 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc061c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc06a4 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0810 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc081c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc08a4 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0928 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0a98 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0aa0 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0b28 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0bb0 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0d1c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0d28 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0dac 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0e34 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0fa0 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc0fac 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1034 7f002010
+[21-38-02]Entered audio_buffdone
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc10fc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc122c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1238 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc12bc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1344 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc14ac 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc14b8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc153c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc15c4 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1730 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc173c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc17c4 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1848 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc19b8 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc19c0 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1a48 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1ad0 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1c3c 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1c48 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1ccc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1d54 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1ec0 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1ecc 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1f54 7f002010
+[21-38-02]Entered dma_pointer
+[21-38-02]Pointer 5cdc1fd8 7f002010
+[21-38-02]Entered audio_buffdone
+[21-38-02]Entered dma_pointer
+[21-38-03]Pointer 5cdc20a4 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2148 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc21b0 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2234 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc22bc 7f002010
+[21-38-03]one_wire_status: 4
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc23cc 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2400 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2488 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc250c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2650 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc265c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc26e4 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2768 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc28d8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc28e0 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2968 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc29f0 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2b5c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2b68 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2bec 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2c74 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2de0 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2dec 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2e74 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2ef8 7f002010
+[21-38-03]Entered audio_buffdone
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3010 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3068 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc30e4 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc316c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc32ec 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc32f8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc337c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3404 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3570 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc357c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3604 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3688 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc37f8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3804 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3888 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3910 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3a7c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3a88 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3b0c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3b94 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3d00 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3d0c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3d94 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3e18 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3f88 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3f90 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0018 7f002010
+[21-38-03]Entered audio_buffdone
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc00e0 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0210 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc021c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc02a0 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0328 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0490 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc049c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0524 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc05a8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0718 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0720 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc07a8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0830 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc099c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc09a8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0a2c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0ab4 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0c20 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0c2c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0cb4 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0d38 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0ea8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0eb0 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0f38 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0fbc 7f002010
+[21-38-03]Entered audio_buffdone
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1088 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc112c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1194 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc121c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc12a0 7f002010
+[21-38-03]one_wire_status: 4
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc13b0 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc13e4 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc146c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc14f4 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1638 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1644 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc16c8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1750 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc18bc 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc18c8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc194c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc19d4 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1b40 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1b4c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1bd4 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1c58 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1dc8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1dd0 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1e58 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1ee0 7f002010
+[21-38-03]Entered audio_buffdone
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2010 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc205c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc20e4 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc216c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc22d0 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc22dc 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2364 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc23e8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2558 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2560 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc25e8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2670 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc27dc 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc27e8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc286c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc28f4 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2a60 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2a6c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2af4 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2b78 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2ce8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2cf0 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2d78 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2e00 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2f6c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2f78 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc2ffc 7f002010
+[21-38-03]Entered audio_buffdone
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc30c8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc31f0 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc31fc 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3284 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3308 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3478 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3480 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3508 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3590 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc36fc 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3708 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc378c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3814 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3984 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc398c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3a14 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3a98 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3c08 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3c14 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3c98 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3d20 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3e8c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3e98 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3f1c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc3fa4 7f002010
+[21-38-03]Entered audio_buffdone
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc006c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0110 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc017c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0200 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0288 7f002010
+[21-38-03]one_wire_status: 4
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0398 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc03cc 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0450 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc04d8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc061c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0628 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc06ac 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0734 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc08a0 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc08ac 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0934 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc09b8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0b28 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0b30 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0bb8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0c40 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0dac 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0db8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0e3c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc0ec4 7f002010
+[21-38-03]Entered audio_buffdone
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1010 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc105c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc10e4 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc116c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc12b8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc12c0 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1348 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc13d0 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc153c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1548 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc15cc 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1654 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc17c0 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc17cc 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1854 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc18d8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1a48 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1a50 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1ad8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1b5c 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1ccc 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-03]Pointer 5cdc1cd8 7f002010
+[21-38-03]Entered dma_pointer
+[21-38-04]Pointer 5cdc1d5c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1de4 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1f50 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1f5c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1fe4 7f002010
+[21-38-04]Entered audio_buffdone
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc20ac 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc21d8 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc21e0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2268 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc22f0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc245c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2468 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc24ec 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2574 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc26e0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc26ec 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2774 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc27f8 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2968 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2970 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc29f8 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2a80 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2bec 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2bf8 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2c7c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2d04 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2e70 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2e7c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2f00 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2f88 7f002010
+[21-38-04]Entered audio_buffdone
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3050 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc30f8 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3160 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc31e4 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc326c 7f002010
+[21-38-04]one_wire_status: 4
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc337c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc33b0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3438 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc34bc 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3600 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc360c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3694 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3718 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3888 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3890 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3918 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc399c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3b0c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3b18 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3b9c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3c24 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3d90 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3d9c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3e24 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3ea8 7f002010
+[21-38-04]Entered audio_buffdone
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0010 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc005c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc00e4 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc016c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc029c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc02a8 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc032c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc03b4 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0520 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc052c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc05b4 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0638 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc07a8 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc07b0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0838 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc08bc 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0a2c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0a38 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0abc 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0b44 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0cb0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0cbc 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0d44 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0dc8 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0f34 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0f40 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0fc8 7f002010
+[21-38-04]Entered audio_buffdone
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1090 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc11bc 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc11c8 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc124c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc12d4 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1448 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1454 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc14d8 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1560 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc16c8 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc16d0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1758 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc17e0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc194c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1958 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc19dc 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1a64 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1bd0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1bdc 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1c60 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1ce8 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1e54 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1e60 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1ee8 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1f6c 7f002010
+[21-38-04]Entered audio_buffdone
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2038 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc20dc 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2144 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc21cc 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2250 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2360 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc236c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc23f4 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2478 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc25e4 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc25f0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2678 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc26fc 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc286c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2878 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc28fc 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2984 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2af0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2afc 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2b80 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2c08 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2d78 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2d80 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2e08 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2e8c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2ffc 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc2ffc 7f002010
+[21-38-04]Entered audio_buffdone
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc30d0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3158 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3280 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc328c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3314 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3398 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3504 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3510 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3598 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc361c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc378c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3798 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc381c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc38a4 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3a10 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3a1c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3aa0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3b28 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3c98 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3ca0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3d28 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3db0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3f1c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3f28 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc3fac 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0034 7f002010
+[21-38-04]Entered audio_buffdone
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc00fc 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc01a4 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0208 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0290 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0318 7f002010
+[21-38-04]one_wire_status: 4
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0428 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc045c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc04e0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0568 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc06ac 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc06b8 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc073c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc07c4 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0930 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc093c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc09c0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0a48 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0bb4 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0bc0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0c48 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0ccc 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0e3c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0e44 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0ecc 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc0f54 7f002010
+[21-38-04]Entered audio_buffdone
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc101c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc10c0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1128 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc11b0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1234 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1344 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1350 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc13d8 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc145c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc15cc 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc15d8 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc165c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc16e4 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1850 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc185c 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc18e0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1968 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1ad4 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1ae0 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-04]Pointer 5cdc1b68 7f002010
+[21-38-04]Entered dma_pointer
+[21-38-05]Pointer 5cdc1bec 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc1d5c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc1d68 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc1dec 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc1e74 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc1fe0 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc1fec 7f002010
+[21-38-05]Entered audio_buffdone
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc20b4 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc213c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2268 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2274 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc22fc 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2380 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc24ec 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc24f8 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc257c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2604 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2770 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc277c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2800 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2888 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc29f4 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2a00 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2a88 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2b0c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2c7c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2c88 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2d0c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2d94 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2f00 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2f0c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2f90 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc3018 7f002010
+[21-38-05]Entered audio_buffdone
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc30e0 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc318c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc31f0 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc3274 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc32fc 7f002010
+[21-38-05]one_wire_status: 4
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc340c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc3440 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc34c8 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc354c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc3690 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc369c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc3720 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc37a8 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc3914 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc3920 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc39a8 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc3a2c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc3b9c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc3ba4 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc3c2c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc3cb4 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc3e20 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc3e2c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc3eb4 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc3f38 7f002010
+[21-38-05]Entered audio_buffdone
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0010 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc00a8 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0110 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0194 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc021c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc032c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0338 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc03bc 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0444 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc05b0 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc05bc 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0640 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc06c8 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0834 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0840 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc08c8 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc094c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0abc 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0ac4 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0b4c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0bd4 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0d40 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0d4c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0dd0 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0e58 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0fc4 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0fd0 7f002010
+[21-38-05]Entered audio_buffdone
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc109c 7f002010
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc1120 7f002010
+[21-38-05]Entered audio_buffdone
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc2010 7f002010
+[21-38-05]Entered audio_buffdone
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc3010 7f002010
+[21-38-05]Entered audio_buffdone
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc0010 7f002010
+[21-38-05]Entered audio_buffdone
+[21-38-05]Entered dma_pointer
+[21-38-05]Pointer 5cdc1010 7f002010
+[21-38-05]Entered dma_trigger
+[21-38-05]Entered dma_hw_free
+[21-38-05]Entered dma_hw_free
+[21-38-05]wm8960-codec 0-001a: read 5 => 0
+[21-38-05]wm8960-codec 0-001a: write 5 = 8
+[21-38-05]i2s_set_sysclk: dai=cc8e0ba0 clk_id=2 rfs=0
+[21-38-05]RCLK_SRC=84666666Hz 
+[21-38-05]Entered dma_close
+[21-38-07][root@FriendlyARM init.d]# 
+[21-38-07][root@FriendlyARM init.d]# 
+[21-38-08][root@FriendlyARM init.d]# 
+[21-38-10][root@FriendlyARM init.d]# wm8960-codec 0-001a: read 1c => 94
+[21-38-10]wm8960-codec 0-001a: read 19 => c0
+[21-38-10]wm8960-codec 0-001a: write 19 = 0
+[21-38-10]wm8960-codec 0-001a: read 1a => 1fa
+[21-38-10]wm8960-codec 0-001a: write 1a = 180
+[21-38-10]wm8960-codec 0-001a: read 31 => f7
+[21-38-10]wm8960-codec 0-001a: write 31 = 37
+[21-38-10]wm8960-codec 0-001a: read 2f => c
+[21-38-10]wm8960-codec 0-001a: write 2f = 0
+[21-38-10]wm8960-codec 0-001a: read 1a => 180
+[21-38-10]wm8960-codec 0-001a: write 1a = 0
+[21-38-10]wm8960-codec 0-001a: read 1d => 0
+[21-38-10]wm8960-codec 0-001a: read 1c => 94
+[21-38-12]
+[21-38-12][root@FriendlyARM init.d]# 
+[21-38-13][root@FriendlyARM init.d]# 
+[21-38-13][root@FriendlyARM init.d]# 
+[21-38-13][root@FriendlyARM init.d]# 
+[21-38-13][root@FriendlyARM init.d]# 
+[21-38-13][root@FriendlyARM init.d]# 
